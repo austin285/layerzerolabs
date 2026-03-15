@@ -1,0 +1,204 @@
+/* =============================================================
+   ANIMATIONS.CSS — Layer Zero Labs
+   Keyframes, scroll reveal system, custom cursor, transitions
+   ============================================================= */
+
+/* ── KEYFRAMES ──────────────────────────────────────────────── */
+
+/* Fade up — used for hero entrance stagger */
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(22px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Ø glyph blue-to-cyan glow pulse */
+@keyframes zeroGlow {
+  from {
+    -webkit-text-stroke-color: var(--accent-blue);
+    filter: drop-shadow(0 0 10px rgba(0, 200, 255, 0.4));
+  }
+  to {
+    -webkit-text-stroke-color: #00FFFF;
+    filter: drop-shadow(0 0 28px rgba(0, 255, 255, 0.9));
+  }
+}
+
+/* Scroll indicator line pulse */
+@keyframes scrollPulse {
+  0%, 100% { opacity: 0.3; }
+  50%       { opacity: 1; }
+}
+
+/* Generic fade-in */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+/* Subtle float — used on about badges */
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50%       { transform: translateY(-8px); }
+}
+
+/* Scanner line — decorative horizontal sweep */
+@keyframes scanLine {
+  0%   { transform: translateY(-100%); opacity: 0; }
+  10%  { opacity: 0.4; }
+  90%  { opacity: 0.4; }
+  100% { transform: translateY(100vh); opacity: 0; }
+}
+
+/* ── APPLIED ANIMATIONS ─────────────────────────────────────── */
+
+/* Hero brand Ø glow — applied in layout.css */
+.brand-zero {
+  animation:
+    fadeUp   0.8s 0.45s forwards,
+    zeroGlow 3s   1.50s ease-in-out infinite alternate;
+}
+
+/* Scroll indicator line */
+.scroll-line {
+  animation: scrollPulse 2s ease-in-out infinite;
+}
+
+/* About badges — staggered float */
+.about-badge:nth-child(1) { animation: float 5.5s ease-in-out infinite; }
+.about-badge:nth-child(2) { animation: float 6.2s ease-in-out 1s infinite; }
+.about-badge:nth-child(3) { animation: float 4.8s ease-in-out 0.5s infinite; }
+
+/* ── SCROLL REVEAL ──────────────────────────────────────────── */
+
+/*
+  Elements with .reveal start invisible.
+  IntersectionObserver in scroll.js adds .is-visible when they enter viewport.
+  Delay variants stagger cards/items in a grid.
+*/
+
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition:
+    opacity  0.7s ease,
+    transform 0.7s ease;
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+/* Delay modifiers — apply to child elements in a row */
+.reveal-d1 { transition-delay: 0.10s; }
+.reveal-d2 { transition-delay: 0.20s; }
+.reveal-d3 { transition-delay: 0.30s; }
+.reveal-d4 { transition-delay: 0.40s; }
+
+/* ── CUSTOM CURSOR ──────────────────────────────────────────── */
+
+/*
+  Two elements: #cursor-outer (ring with crosshair lines) and
+  #cursor-inner (solid dot). Outer lags behind cursor position
+  for a cinematic inertia feel (handled in cursor.js).
+*/
+
+#cursor-outer {
+  position: fixed;
+  width: 36px;
+  height: 36px;
+  border: 1px solid var(--accent-blue);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9999;
+  transform: translate(-50%, -50%);
+  /* CSS transitions handle the size change on hover states */
+  transition:
+    width  0.15s ease,
+    height 0.15s ease,
+    border-color 0.15s ease,
+    background 0.15s ease;
+}
+
+/* Crosshair lines inside the ring */
+#cursor-outer::before,
+#cursor-outer::after {
+  content: '';
+  position: absolute;
+  background: var(--accent-blue);
+  opacity: 0.5;
+}
+
+#cursor-outer::before {
+  width: 1px;
+  height: 10px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+#cursor-outer::after {
+  width: 10px;
+  height: 1px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* Inner dot — sits exactly on the pointer, no lag */
+#cursor-inner {
+  position: fixed;
+  width: 5px;
+  height: 5px;
+  background: var(--accent-blue);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 10000;
+  transform: translate(-50%, -50%);
+  box-shadow: var(--glow-sm);
+}
+
+/* Expanded state when hovering interactive elements */
+body.cursor-hover #cursor-outer {
+  width: 52px;
+  height: 52px;
+  border-color: var(--accent-orange);
+  background: rgba(0, 200, 255, 0.05);
+}
+
+body.cursor-hover #cursor-inner {
+  background: var(--accent-orange);
+}
+
+/* ── NAVIGATION ACTIVE TRANSITION ───────────────────────────── */
+
+/* Smooth color transition on active link */
+.nav-links a {
+  transition: color 0.2s ease;
+}
+
+/* ── FORM INPUT FOCUS ───────────────────────────────────────── */
+
+/* Handled in components.css but the transition durations live here */
+.form-group input,
+.form-group select,
+.form-group textarea {
+  transition:
+    border-color 0.2s ease,
+    box-shadow   0.2s ease;
+}
+
+/* ── HOVER STATE TRANSITIONS ────────────────────────────────── */
+
+.service-card    { transition: border-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease; }
+.gallery-item    { transition: border-color 0.3s ease; }
+.gallery-overlay { transition: opacity 0.3s ease; }
+.step-node       { transition: box-shadow 0.3s ease, border-color 0.3s ease; }
+.filter-btn      { transition: color 0.2s ease, border-color 0.2s ease, background 0.2s ease, box-shadow 0.2s ease; }
+.footer-links a  { transition: color 0.2s ease; }

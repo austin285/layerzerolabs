@@ -1,0 +1,195 @@
+/* =============================================================
+   BASE.CSS — Layer Zero Labs
+   CSS custom properties, reset, typography, global utilities
+   ============================================================= */
+
+/* ── DESIGN TOKENS ─────────────────────────────────────────── */
+
+:root {
+
+  /* Backgrounds */
+  --bg-deep:        #030810;
+  --bg-dark:        #070F1A;
+  --bg-card:        #0A1828;
+  --bg-card-hover:  #0D2040;
+
+  /* Brand Colors */
+  --accent-blue:    #00C8FF;
+  --accent-blue2:   #0080CC;
+  --accent-orange:  #FF6B00;
+  --accent-orange2: #CC4400;
+  --accent-purple:  #8B4FCC;
+
+  /* Chrome / Metal */
+  --chrome:         #C8DDF0;
+  --chrome-dim:     #5A7A9A;
+
+  /* Text */
+  --text-primary:   #E0EEF8;
+  --text-secondary: #6A8AA8;
+  --text-dim:       #3A5A78;
+
+  /* Blueprint grid lines */
+  --bp-line:        rgba(0, 168, 255, 0.12);
+  --bp-heavy:       rgba(0, 168, 255, 0.25);
+
+  /* Glow shadows */
+  --glow-blue:   0 0 15px rgba(0,200,255,.6), 0 0 40px rgba(0,200,255,.3), 0 0 80px rgba(0,200,255,.1);
+  --glow-orange: 0 0 15px rgba(255,107,0,.6), 0 0 40px rgba(255,107,0,.3), 0 0 80px rgba(255,107,0,.1);
+  --glow-sm:     0 0 8px rgba(0,200,255,.7),  0 0 20px rgba(0,200,255,.3);
+
+  /* Typography scale */
+  --font-display: 'Orbitron', sans-serif;
+  --font-body:    'Exo 2', sans-serif;
+  --font-mono:    'Share Tech Mono', monospace;
+
+  /* Spacing */
+  --section-pad: 100px 52px;
+  --max-width:   1240px;
+
+}
+
+/* ── RESET ──────────────────────────────────────────────────── */
+
+*, ::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+}
+
+body {
+  font-family: var(--font-body);
+  background: var(--bg-deep);
+  color: var(--text-primary);
+  overflow-x: hidden;
+  cursor: none; /* replaced by custom cursor */
+  line-height: 1.5;
+}
+
+img, video {
+  display: block;
+  max-width: 100%;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+button {
+  font-family: inherit;
+  cursor: none;
+  border: none;
+  background: none;
+}
+
+input, select, textarea {
+  font-family: inherit;
+}
+
+ul, ol {
+  list-style: none;
+}
+
+/* ── SCROLLBAR ──────────────────────────────────────────────── */
+
+::-webkit-scrollbar        { width: 3px; }
+::-webkit-scrollbar-track  { background: var(--bg-deep); }
+::-webkit-scrollbar-thumb  { background: var(--accent-blue2); }
+
+/* ── SCAN LINE OVERLAY ──────────────────────────────────────── */
+
+/* Applied to body::after so it covers everything */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: 9990;
+  pointer-events: none;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(0, 0, 0, 0.025) 2px,
+    rgba(0, 0, 0, 0.025) 4px
+  );
+}
+
+/* ── TYPOGRAPHY ─────────────────────────────────────────────── */
+
+h1, h2, h3 {
+  font-family: var(--font-display);
+  line-height: 1.1;
+}
+
+/* ── SECTION SCAFFOLDING ────────────────────────────────────── */
+
+section {
+  position: relative;
+  overflow: hidden;
+}
+
+.section-inner {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: var(--section-pad);
+}
+
+.section-label {
+  font-family: var(--font-mono);
+  font-size: 0.67rem;
+  letter-spacing: 0.5em;
+  color: var(--accent-blue);
+  text-transform: uppercase;
+  margin-bottom: 14px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.section-label::before {
+  content: '';
+  width: 28px;
+  height: 1px;
+  background: var(--accent-blue);
+  box-shadow: var(--glow-sm);
+}
+
+.section-title {
+  font-family: var(--font-display);
+  font-size: clamp(1.7rem, 3.5vw, 2.8rem);
+  font-weight: 700;
+  color: var(--text-primary);
+  line-height: 1.1;
+}
+
+/* Orange outlined accent word */
+.section-title em {
+  font-style: normal;
+  color: transparent;
+  -webkit-text-stroke: 1.5px var(--accent-orange);
+}
+
+/* ── UTILITY CLASSES ────────────────────────────────────────── */
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+/* ── RESPONSIVE BREAKPOINTS ─────────────────────────────────── */
+
+@media (max-width: 960px) {
+  :root {
+    --section-pad: 70px 24px;
+  }
+}

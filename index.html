@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Layer Zero Labs — Precision 3D Print Studio. FDM, SLA Resin, Custom Prototyping. Georgia-based. Where digital concepts become physical reality." />
+  <title>Layer Zero Labs — 3D Print Studio</title>
+
+  <!-- ── Google Fonts ─────────────────────────────────────── -->
+  <!-- Orbitron:  Display / brand headlines                   -->
+  <!-- Exo 2:     Body copy / UI labels                       -->
+  <!-- Share Tech Mono: Monospace accents / code-style labels -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;900&family=Exo+2:ital,wght@0,300;0,400;0,500;0,600;1,300&family=Share+Tech+Mono&display=swap"
+    rel="stylesheet"
+  />
+
+  <!-- ── Stylesheets (order matters) ─────────────────────── -->
+  <link rel="stylesheet" href="css/base.css" />
+  <link rel="stylesheet" href="css/animations.css" />
+  <link rel="stylesheet" href="css/layout.css" />
+  <link rel="stylesheet" href="css/components.css" />
+</head>
+<body>
+
+  <!-- ════════════════════════════════════════════════════════
+       CUSTOM CURSOR
+       Two elements: outer ring (lags) + inner dot (instant)
+       Animated by js/cursor.js
+  ═════════════════════════════════════════════════════════ -->
+  <div id="cursor-outer" aria-hidden="true"></div>
+  <div id="cursor-inner" aria-hidden="true"></div>
+
+  <!-- ════════════════════════════════════════════════════════
+       NAVIGATION
+  ═════════════════════════════════════════════════════════ -->
+  <nav id="main-nav" role="navigation" aria-label="Main navigation">
+    <a href="#hero" class="nav-logo" aria-label="Layer Zero Labs home">
+      LAYER<span class="glyph-zero">Ø</span>LABS
+    </a>
+    <ul class="nav-links">
+      <li><a href="#services">Services</a></li>
+      <li><a href="#gallery">Gallery</a></li>
+      <li><a href="#process">Process</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#quote" class="nav-cta">Get Quote</a></li>
+    </ul>
+  </nav>
+
+  <!-- ════════════════════════════════════════════════════════
+       HERO
+       Three.js canvas lives inside here (injected by hero.js)
+  ═════════════════════════════════════════════════════════ -->
+  <section id="hero" aria-label="Hero">
+    <canvas id="hero-canvas" aria-hidden="true"></canvas>
+
+    <div class="hero-content">
+      <p class="hero-eyebrow">// LAYER 0 · THE PHYSICAL LAYER · GEORGIA</p>
+      <h1 class="hero-brand">
+        <span class="brand-layer">LAYER</span><span class="brand-zero">Ø</span>
+        <span class="brand-labs">LABS</span>
+      </h1>
+      <p class="hero-tagline">Where Digital Concepts Become Physical Reality</p>
+      <div class="hero-actions">
+        <a href="#quote" class="btn-primary">▸ START YOUR BUILD</a>
+        <a href="#gallery" class="btn-secondary">VIEW GALLERY</a>
+      </div>
+    </div>
+
+    <div class="hero-scroll" aria-hidden="true">
+      <span>SCROLL</span>
+      <div class="scroll-line"></div>
+    </div>
+
+    <div class="hero-stats" aria-label="Key specifications">
+      <div class="stat-item">
+        <div class="stat-number">FDM</div>
+        <div class="stat-label">Fused Deposition</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number">SLA</div>
+        <div class="stat-label">Resin / Photopolymer</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number">0.1mm</div>
+        <div class="stat-label">Layer Resolution</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number">30+</div>
+        <div class="stat-label">Materials</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number">48hr</div>
+        <div class="stat-label">Std Turnaround</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════
+       SERVICES
+  ═════════════════════════════════════════════════════════ -->
+  <section id="services">
+    <div class="section-inner">
+      <p class="section-label reveal">Capabilities</p>
+      <h2 class="section-title reveal">What We <em>Build</em></h2>
+
+      <div class="services-grid">
+
+        <article class="service-card reveal reveal-d1">
+          <span class="card-number" aria-hidden="true">01</span>
+          <span class="card-icon" aria-hidden="true">⬡</span>
+          <h3 class="card-name">FDM PRINTING</h3>
+          <p class="card-desc">Fused deposition modeling for functional prototypes, structural parts, and high-volume production runs. Strong, durable, and cost-effective at any scale.</p>
+          <div class="card-tags">
+            <span class="tag">PLA</span>
+            <span class="tag">PETG</span>
+            <span class="tag">ABS</span>
+            <span class="tag">TPU</span>
+            <span class="tag">CF-NYLON</span>
+          </div>
+        </article>
+
+        <article class="service-card reveal reveal-d2">
+          <span class="card-number" aria-hidden="true">02</span>
+          <span class="card-icon" aria-hidden="true">◈</span>
+          <h3 class="card-name">RESIN / SLA</h3>
+          <p class="card-desc">Stereolithography and MSLA resin printing for ultra-fine detail and smooth surfaces. Ideal for miniatures, mechanical precision parts, and jewelry.</p>
+          <div class="card-tags">
+            <span class="tag">ABS-LIKE</span>
+            <span class="tag">WATER-WASH</span>
+            <span class="tag">DENTAL</span>
+            <span class="tag">FLEXIBLE</span>
+          </div>
+        </article>
+
+        <article class="service-card reveal reveal-d3">
+          <span class="card-number" aria-hidden="true">03</span>
+          <span class="card-icon" aria-hidden="true">◇</span>
+          <h3 class="card-name">CUSTOM PROTOTYPING</h3>
+          <p class="card-desc">End-to-end concept-to-part service. Bring a napkin sketch, a reference photo, or a half-formed idea. We handle modeling, slicing, and all refinement iterations.</p>
+          <div class="card-tags">
+            <span class="tag">CAD DESIGN</span>
+            <span class="tag">ITERATION</span>
+            <span class="tag">CONSULT</span>
+          </div>
+        </article>
+
+        <article class="service-card reveal reveal-d1">
+          <span class="card-number" aria-hidden="true">04</span>
+          <span class="card-icon" aria-hidden="true">⊞</span>
+          <h3 class="card-name">DESIGN SERVICES</h3>
+          <p class="card-desc">Don't have a file? Our pipeline covers parametric CAD modeling, organic sculpting, and print-optimization for any geometry or use case from scratch.</p>
+          <div class="card-tags">
+            <span class="tag">FUSION 360</span>
+            <span class="tag">BLENDER</span>
+            <span class="tag">BAMBU STUDIO</span>
+          </div>
+        </article>
+
+        <article class="service-card reveal reveal-d2">
+          <span class="card-number" aria-hidden="true">05</span>
+          <span class="card-icon" aria-hidden="true">✦</span>
+          <h3 class="card-name">POST-PROCESSING</h3>
+          <p class="card-desc">Raw prints aren't always ready to ship. We offer sanding, priming, painting, vapor smoothing, UV coating, heat-set inserts, and hardware embedding.</p>
+          <div class="card-tags">
+            <span class="tag">SANDING</span>
+            <span class="tag">PAINTING</span>
+            <span class="tag">SMOOTHING</span>
+            <span class="tag">ASSEMBLY</span>
+          </div>
+        </article>
+
+        <article class="service-card reveal reveal-d3">
+          <span class="card-number" aria-hidden="true">06</span>
+          <span class="card-icon" aria-hidden="true">⬢</span>
+          <h3 class="card-name">SMALL BATCH FULFILLMENT</h3>
+          <p class="card-desc">Need 5, 50, or 500 units? We handle production runs with consistent QC, packaging, and direct-to-customer or B2B shipping nationwide.</p>
+          <div class="card-tags">
+            <span class="tag">PRODUCTION RUNS</span>
+            <span class="tag">QC</span>
+            <span class="tag">SHIPPING</span>
+          </div>
+        </article>
+
+      </div><!-- /.services-grid -->
+    </div><!-- /.section-inner -->
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════
+       GALLERY
+  ═════════════════════════════════════════════════════════ -->
+  <section id="gallery">
+    <div class="section-inner">
+      <p class="section-label reveal">Portfolio</p>
+      <h2 class="section-title reveal">Print <em>Gallery</em></h2>
+
+      <!-- Filter buttons — add data-category to .gallery-item to activate filtering -->
+      <div class="gallery-filter reveal" role="group" aria-label="Filter by category">
+        <button class="filter-btn is-active" type="button">All</button>
+        <button class="filter-btn" type="button">Functional</button>
+        <button class="filter-btn" type="button">Miniatures</button>
+        <button class="filter-btn" type="button">Art &amp; Decor</button>
+        <button class="filter-btn" type="button">Mechanical</button>
+        <button class="filter-btn" type="button">Custom</button>
+      </div>
+
+      <div class="gallery-grid">
+        <!--
+          To add real photos:
+            1. Drop images into assets/
+            2. Replace .gallery-placeholder with:
+               <img src="assets/your-photo.jpg" alt="Description" loading="lazy" />
+            3. Add data-category="functional" (etc.) to filter
+        -->
+
+        <div class="gallery-item reveal" data-category="functional">
+          <div class="gallery-placeholder">
+            <div class="placeholder-icon" aria-hidden="true">⬡</div>
+            <div class="placeholder-text">ADD YOUR PHOTO</div>
+          </div>
+          <div class="gallery-overlay" aria-hidden="true">
+            <div>
+              <div class="overlay-title">MODULAR ENCLOSURE V3</div>
+              <div class="overlay-meta">FDM · PETG · 0.2mm</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="gallery-item reveal reveal-d1" data-category="miniatures">
+          <div class="gallery-placeholder">
+            <div class="placeholder-icon" aria-hidden="true">◈</div>
+            <div class="placeholder-text">ADD YOUR PHOTO</div>
+          </div>
+          <div class="gallery-overlay" aria-hidden="true">
+            <div>
+              <div class="overlay-title">RESIN MINIATURE SET</div>
+              <div class="overlay-meta">SLA · 0.05mm</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="gallery-item reveal reveal-d2" data-category="mechanical">
+          <div class="gallery-placeholder">
+            <div class="placeholder-icon" aria-hidden="true">◇</div>
+            <div class="placeholder-text">ADD YOUR PHOTO</div>
+          </div>
+          <div class="gallery-overlay" aria-hidden="true">
+            <div>
+              <div class="overlay-title">BRACKET ARRAY</div>
+              <div class="overlay-meta">FDM · CF-PETG</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="gallery-item reveal reveal-d1" data-category="mechanical">
+          <div class="gallery-placeholder">
+            <div class="placeholder-icon" aria-hidden="true">⬢</div>
+            <div class="placeholder-text">ADD YOUR PHOTO</div>
+          </div>
+          <div class="gallery-overlay" aria-hidden="true">
+            <div>
+              <div class="overlay-title">ARTICULATED ARM</div>
+              <div class="overlay-meta">FDM · ABS · Multi-Part</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="gallery-item reveal reveal-d2" data-category="art">
+          <div class="gallery-placeholder">
+            <div class="placeholder-icon" aria-hidden="true">⊞</div>
+            <div class="placeholder-text">ADD YOUR PHOTO</div>
+          </div>
+          <div class="gallery-overlay" aria-hidden="true">
+            <div>
+              <div class="overlay-title">TERRAIN TILE SYSTEM</div>
+              <div class="overlay-meta">FDM · PLA · 30pc</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="gallery-item reveal" data-category="functional">
+          <div class="gallery-placeholder">
+            <div class="placeholder-icon" aria-hidden="true">✦</div>
+            <div class="placeholder-text">ADD YOUR PHOTO</div>
+          </div>
+          <div class="gallery-overlay" aria-hidden="true">
+            <div>
+              <div class="overlay-title">PROTOTYPE HOUSING</div>
+              <div class="overlay-meta">FDM · PETG · Functional</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="gallery-item reveal reveal-d1" data-category="art">
+          <div class="gallery-placeholder">
+            <div class="placeholder-icon" aria-hidden="true">◉</div>
+            <div class="placeholder-text">ADD YOUR PHOTO</div>
+          </div>
+          <div class="gallery-overlay" aria-hidden="true">
+            <div>
+              <div class="overlay-title">WALL ART PANEL</div>
+              <div class="overlay-meta">FDM · PLA · Decor</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="gallery-item reveal reveal-d2" data-category="custom">
+          <div class="gallery-placeholder">
+            <div class="placeholder-icon" aria-hidden="true">⬡</div>
+            <div class="placeholder-text">ADD YOUR PHOTO</div>
+          </div>
+          <div class="gallery-overlay" aria-hidden="true">
+            <div>
+              <div class="overlay-title">CUSTOM KEYCAP SET</div>
+              <div class="overlay-meta">Resin · 0.05mm</div>
+            </div>
+          </div>
+        </div>
+
+      </div><!-- /.gallery-grid -->
+    </div><!-- /.section-inner -->
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════
+       PROCESS
+  ═════════════════════════════════════════════════════════ -->
+  <section id="process">
+    <div class="section-inner">
+      <p class="section-label reveal">How It Works</p>
+      <h2 class="section-title reveal">From File to <em>Finished</em></h2>
+
+      <div class="process-track" role="list">
+
+        <div class="process-step reveal reveal-d1" role="listitem">
+          <div class="step-node" aria-hidden="true">
+            <div>
+              <div class="step-number">01</div>
+              <div class="step-emoji">📤</div>
+            </div>
+          </div>
+          <h3 class="step-title">UPLOAD &amp; QUOTE</h3>
+          <p class="step-desc">Submit your STL, OBJ, or STEP file through the quote form. Include material preference, quantity, and any finish requirements.</p>
+          <div class="step-detail">// STL · OBJ · STEP · 3MF</div>
+        </div>
+
+        <div class="process-step reveal reveal-d2" role="listitem">
+          <div class="step-node" aria-hidden="true">
+            <div>
+              <div class="step-number">02</div>
+              <div class="step-emoji">🔍</div>
+            </div>
+          </div>
+          <h3 class="step-title">REVIEW &amp; CONFIRM</h3>
+          <p class="step-desc">We analyze your file for printability, flag geometry issues, suggest material upgrades, and send back a detailed quote within 24 hours.</p>
+          <div class="step-detail">// RESPONSE TIME ≤ 24HRS</div>
+        </div>
+
+        <div class="process-step reveal reveal-d3" role="listitem">
+          <div class="step-node" aria-hidden="true">
+            <div>
+              <div class="step-number">03</div>
+              <div class="step-emoji">⚙️</div>
+            </div>
+          </div>
+          <h3 class="step-title">PRINT &amp; PROCESS</h3>
+          <p class="step-desc">Parts enter the print queue. We handle slicing, support optimization, post-processing, and QC inspection before packaging.</p>
+          <div class="step-detail">// STD TURNAROUND: 48–72HRS</div>
+        </div>
+
+        <div class="process-step reveal reveal-d4" role="listitem">
+          <div class="step-node" aria-hidden="true">
+            <div>
+              <div class="step-number">04</div>
+              <div class="step-emoji">📦</div>
+            </div>
+          </div>
+          <h3 class="step-title">SHIP &amp; DELIVER</h3>
+          <p class="step-desc">Parts are securely packaged and shipped with tracking. Georgia local pickup available. Rush options on request.</p>
+          <div class="step-detail">// GA LOCAL PICKUP AVAILABLE</div>
+        </div>
+
+      </div><!-- /.process-track -->
+    </div><!-- /.section-inner -->
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════
+       ABOUT
+  ═════════════════════════════════════════════════════════ -->
+  <section id="about">
+    <div class="section-inner">
+      <div class="about-grid">
+
+        <!-- Blueprint isometric visual -->
+        <div class="about-visual reveal" aria-hidden="true">
+          <div class="about-badge" style="top:18%;left:8%">
+            <div class="badge-value">Ø</div>
+            <div class="badge-label">Layer Zero</div>
+          </div>
+          <div class="about-badge" style="top:48%;right:4%">
+            <div class="badge-value">FDM+SLA</div>
+            <div class="badge-label">Dual Platform</div>
+          </div>
+          <div class="about-badge" style="bottom:14%;left:18%">
+            <div class="badge-value">GA</div>
+            <div class="badge-label">Georgia Based</div>
+          </div>
+
+          <!-- Inline SVG blueprint / isometric CAD drawing -->
+          <svg viewBox="0 0 400 500"
+               style="position:absolute;inset:0;width:100%;height:100%;opacity:.55"
+               xmlns="http://www.w3.org/2000/svg"
+               role="presentation">
+            <defs>
+              <pattern id="grid-large" width="40" height="40" patternUnits="userSpaceOnUse">
+                <path d="M40 0L0 0 0 40" fill="none" stroke="rgba(0,168,255,.18)" stroke-width=".5"/>
+              </pattern>
+              <pattern id="grid-small" width="8" height="8" patternUnits="userSpaceOnUse">
+                <path d="M8 0L0 0 0 8"  fill="none" stroke="rgba(0,168,255,.07)" stroke-width=".5"/>
+              </pattern>
+            </defs>
+            <rect width="400" height="500" fill="url(#grid-small)"/>
+            <rect width="400" height="500" fill="url(#grid-large)"/>
+            <!-- Isometric cube wireframe -->
+            <g transform="translate(200,130)">
+              <polygon points="0,-75 85,-33 0,8 -85,-33"    fill="none" stroke="rgba(0,200,255,.65)" stroke-width="1.5"/>
+              <polygon points="85,-33 85,65 0,105 0,8"      fill="none" stroke="rgba(0,200,255,.4)"  stroke-width="1.5"/>
+              <polygon points="-85,-33 -85,65 0,105 0,8"   fill="none" stroke="rgba(0,200,255,.4)"  stroke-width="1.5"/>
+              <line x1="0"   y1="8"   x2="0"   y2="105" stroke="rgba(0,200,255,.2)" stroke-width=".5" stroke-dasharray="4,4"/>
+              <line x1="-42" y1="-12" x2="42"  y2="28"  stroke="rgba(0,200,255,.2)" stroke-width=".5" stroke-dasharray="4,4"/>
+              <circle cx="0"   cy="-75" r="3" fill="rgba(0,200,255,.8)"/>
+              <circle cx="85"  cy="-33" r="3" fill="rgba(255,107,0,.8)"/>
+              <circle cx="-85" cy="-33" r="3" fill="rgba(255,107,0,.8)"/>
+            </g>
+            <!-- Dimension lines -->
+            <line x1="300" y1="98"  x2="330" y2="98"  stroke="rgba(255,107,0,.6)" stroke-width="1"/>
+            <line x1="300" y1="240" x2="330" y2="240" stroke="rgba(255,107,0,.6)" stroke-width="1"/>
+            <line x1="315" y1="98"  x2="315" y2="240" stroke="rgba(255,107,0,.5)" stroke-width=".5"/>
+            <text x="322" y="172" fill="rgba(255,107,0,.75)" font-size="9" font-family="monospace"
+                  transform="rotate(90,322,172)">150mm</text>
+            <text x="10" y="490" fill="rgba(0,168,255,.28)" font-size="7" font-family="monospace">
+              LAYER Ø LABS · GEORGIA · CAD REV 1.0
+            </text>
+          </svg>
+        </div>
+
+        <!-- Copy -->
+        <div class="about-text">
+          <p class="section-label reveal">The Story</p>
+          <h2 class="section-title reveal">Built From <em>Layer Zero</em></h2>
+          <div style="margin-top:30px">
+            <p class="reveal">
+              <strong>Layer Zero isn’t just a name — it’s a philosophy.</strong>
+              In networking, Layer 0 is the physical layer: the actual wire, the actual signal,
+              the real substrate everything digital depends on.
+            </p>
+            <p class="reveal">
+              Layer Zero Labs was built on that same premise.
+              <strong>Before software, before systems, before all the abstraction —
+              something physical has to exist.</strong> We make that thing.
+            </p>
+            <p class="reveal">
+              Founded in Georgia by a systems builder who got tired of slow vendors and expensive
+              prototyping services, LZL is a precision 3D print studio focused on fast turnaround,
+              zero-compromise quality, and genuine technical partnership with every client.
+            </p>
+            <ul class="capability-list reveal">
+              <li class="capability-item"><strong>Bambu Lab X1C</strong> — high-speed multi-material FDM</li>
+              <li class="capability-item"><strong>Elegoo Saturn 3 Ultra</strong> — 12K MSLA resin printing</li>
+              <li class="capability-item"><strong>Fusion 360 + Bambu Studio</strong> — full CAD and slicer pipeline</li>
+              <li class="capability-item"><strong>Full post-processing</strong> — sand, prime, paint, embed, assemble</li>
+              <li class="capability-item"><strong>Georgia-based</strong> — local pickup + nationwide shipping</li>
+            </ul>
+          </div>
+        </div>
+
+      </div><!-- /.about-grid -->
+    </div><!-- /.section-inner -->
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════
+       QUOTE / CONTACT
+  ═════════════════════════════════════════════════════════ -->
+  <section id="quote">
+    <div class="section-inner">
+      <p class="section-label reveal">Get Started</p>
+      <h2 class="section-title reveal">Request a <em>Quote</em></h2>
+
+      <div class="quote-grid">
+
+        <!-- Left: info block -->
+        <div class="quote-info reveal">
+          <h3>Let’s build something.</h3>
+          <p>
+            Fill out the form with your project details and attach your file.
+            We’ll review the geometry, recommend the best process and material,
+            and get back to you with a full quote within 24 hours.
+          </p>
+
+          <div class="contact-method">
+            <div class="contact-icon" aria-hidden="true">📧</div>
+            <div>
+              <div class="contact-label">Email</div>
+              <div class="contact-value">hello@layerzerolabs.com</div>
+            </div>
+          </div>
+
+          <div class="contact-method">
+            <div class="contact-icon" aria-hidden="true">📍</div>
+            <div>
+              <div class="contact-label">Location</div>
+              <div class="contact-value">Georgia, USA · Local Pickup Available</div>
+            </div>
+          </div>
+
+          <div class="contact-method">
+            <div class="contact-icon" aria-hidden="true">⏱</div>
+            <div>
+              <div class="contact-label">Std Turnaround</div>
+              <div class="contact-value">48–72 hours from approval</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: quote form -->
+        <form id="quote-form" class="quote-form reveal" novalidate>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="first-name">First Name</label>
+              <input id="first-name" name="first_name" type="text" placeholder="Austin" required />
+            </div>
+            <div class="form-group">
+              <label for="last-name">Last Name</label>
+              <input id="last-name" name="last_name" type="text" placeholder="Reid" required />
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input id="email" name="email" type="email" placeholder="you@email.com" required />
+            </div>
+            <div class="form-group">
+              <label for="phone">Phone (Optional)</label>
+              <input id="phone" name="phone" type="tel" placeholder="+1 (555) 000-0000" />
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="technology">Print Technology</label>
+              <select id="technology" name="technology" required>
+                <option value="" disabled selected>Select process</option>
+                <option>FDM — Standard</option>
+                <option>FDM — High Detail</option>
+                <option>SLA Resin — Standard</option>
+                <option>SLA Resin — Ultra Fine</option>
+                <option>Not Sure — Recommend</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="material">Material</label>
+              <select id="material" name="material">
+                <option value="" disabled selected>Select material</option>
+                <option>PLA</option>
+                <option>PETG</option>
+                <option>ABS</option>
+                <option>TPU (Flexible)</option>
+                <option>CF-PETG</option>
+                <option>CF-Nylon</option>
+                <option>Resin — Standard</option>
+                <option>Resin — ABS-Like</option>
+                <option>Resin — Flexible</option>
+                <option>Not Sure</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="quantity">Quantity</label>
+              <input id="quantity" name="quantity" type="number" placeholder="1" min="1" />
+            </div>
+            <div class="form-group">
+              <label for="deadline">Target Deadline</label>
+              <input id="deadline" name="deadline" type="date" />
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="description">Project Description</label>
+            <textarea
+              id="description"
+              name="description"
+              placeholder="Describe your project — dimensions, use case, special requirements, tolerance needs, finish level..."
+            ></textarea>
+          </div>
+
+          <div class="form-group">
+            <label>Attach File</label>
+            <div id="file-dropzone" class="file-dropzone" role="button" tabindex="0" aria-label="Click or drag to upload 3D file">
+              <div class="dropzone-icon" aria-hidden="true">⬆</div>
+              <p class="dropzone-hint">Drop your STL, OBJ, STEP, or 3MF file here — or click to browse</p>
+              <span class="dropzone-types">// MAX 50MB · MULTIPLE FILES OK</span>
+              <input
+                id="file-input"
+                type="file"
+                accept=".stl,.obj,.step,.stp,.3mf"
+                multiple
+                style="display:none"
+                aria-hidden="true"
+              />
+            </div>
+          </div>
+
+          <button id="submit-btn" type="submit" class="btn-submit">
+            ▸ SUBMIT QUOTE REQUEST
+          </button>
+        </form>
+
+      </div><!-- /.quote-grid -->
+    </div><!-- /.section-inner -->
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════
+       FOOTER
+  ═════════════════════════════════════════════════════════ -->
+  <footer id="main-footer" role="contentinfo">
+    <div class="footer-logo">LAYER<span class="glyph-zero">Ø</span>LABS</div>
+    <div class="footer-copy">© 2025 LAYER ZERO LABS · ALL RIGHTS RESERVED · GEORGIA, USA</div>
+    <nav class="footer-links" aria-label="Footer navigation">
+      <a href="#services">Services</a>
+      <a href="#gallery">Gallery</a>
+      <a href="#quote">Quote</a>
+    </nav>
+  </footer>
+
+  <!-- ════════════════════════════════════════════════════════
+       SCRIPTS
+       Load order matters:
+         1. Three.js (CDN) — must exist before hero.js runs
+         2. cursor.js      — sets up RAF loop immediately
+         3. hero.js        — starts Three.js scene
+         4. scroll.js      — wires IntersectionObserver
+         5. gallery.js     — filter buttons
+         6. form.js        — quote form + file drop
+  ═════════════════════════════════════════════════════════ -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="js/cursor.js"></script>
+  <script src="js/hero.js"></script>
+  <script src="js/scroll.js"></script>
+  <script src="js/gallery.js"></script>
+  <script src="js/form.js"></script>
+
+</body>
+</html>
