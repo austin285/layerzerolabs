@@ -3,146 +3,150 @@
  *
  * Quote form behaviors:
  *   1. File drag-and-drop zone — accepts STL, OBJ, STEP, 3MF files
- *      with visual feedback during drag-over and on file select
- *   2. Form submission handler — shows a success state inline
- *      (swap this for a real API call or Formspree endpoint)
+ *   2. Form submission via Formspree (https://formspree.io/f/xojknlvk)
  *
- * To wire to a real backend:
- *   - Replace the handleSubmit body with a fetch() POST to your
- *     endpoint (e.g. Formspree, Netlify Forms, your own API)
- *   - The FormData object is already built — just pass it in
+ * Submissions are sent to Formspree and forwarded to your linked email.
+ * To change the destination email, update it in Formspree dashboard:
+ *   https://formspree.io/forms/xojknlvk/settings
  */
 
 (function initForm() {
-  'use strict';
+    'use strict';
 
-  /* ── Element references ───────────────────────────────────── */
+   /* ── Configuration ──────────────────────────────────────── */
+   var FORMSPREE_URL = 'https://formspree.io/f/xojknlvk';
 
-  const form       = document.getElementById('quote-form');
-  const dropzone   = document.getElementById('file-dropzone');
-  const fileInput  = document.getElementById('file-input');
-  const submitBtn  = document.getElementById('submit-btn');
+   /* ── Element references ─────────────────────────────────── */
+   var form      = document.getElementById('quote-form');
+    var dropzone  = document.getElementById('file-dropzone');
+    var fileInput = document.getElementById('file-input');
+    var submitBtn = document.getElementById('submit-btn');
 
-  if (!form) return;
+   if (!form) return;
 
-  /* ══════════════════════════════════════════════════════════
-     1. FILE DRAG-AND-DROP ZONE
-     ══════════════════════════════════════════════════════════ */
+   /* ══════════════════════════════════════════════════════════
+       1. FILE DRAG-AND-DROP ZONE
+       ══════════════════════════════════════════════════════════ */
 
-  /* ── Click to open file picker ────────────────────────────── */
+   if (dropzone && fileInput) {
+         dropzone.addEventListener('click', function() {
+                 fileInput.click();
+         });
 
-  if (dropzone && fileInput) {
+      fileInput.addEventListener('change', function() {
+              if (fileInput.files && fileInput.files.length > 0) {
+                        displaySelectedFiles(fileInput.files);
+              }
+      });
 
-    dropzone.addEventListener('click', function() {
-      fileInput.click();
-    });
+      dropzone.addEventListener('dragover', function(e) {
+              e.preventDefault();
+              dropzone.classList.add('is-dragover');
+      });
 
-    /* ── File picker selection ──────────────────────────────── */
+      dropzone.addEventListener('dragenter', function(e) {
+              e.preventDefault();
+              dropzone.classList.add('is-dragover');
+      });
 
-    fileInput.addEventListener('change', function() {
-      if (fileInput.files && fileInput.files.length > 0) {
-        displaySelectedFiles(fileInput.files);
-      }
-    });
+      dropzone.addEventListener('dragleave', function() {
+              dropzone.classList.remove('is-dragover');
+      });
 
-    /* ── Drag over — visual feedback ────────────────────────── */
+      dropzone.addEventListener('drop', function(e) {
+              e.preventDefault();
+              dropzone.classList.remove('is-dragover');
+              var files = e.dataTransfer.files;
+              if (files && files.length > 0) {
+                        try { fileInput.files = files; } catch (err) { }
+                        displaySelectedFiles(files);
+              }
+      });
+   }
 
-    dropzone.addEventListener('dragover', function(e) {
-      e.preventDefault();
-      dropzone.classList.add('is-dragover');
-    });
+   function displaySelectedFiles(files) {
+         if (!dropzone) return;
+         var names  = Array.from(files).map(function(f) { return f.name; });
+         var hintEl = dropzone.querySelector('.dropzone-hint');
+         var iconEl = dropzone.querySelector('.dropzone-icon');
+         if (hintEl) hintEl.textContent = '\u2713 ' + names.join(', ');
+         if (iconEl) iconEl.textContent = '\u2713';
+         dropzone.classList.add('has-files');
+         dropzone.classList.remove('is-dragover');
+   }
 
-    dropzone.addEventListener('dragenter', function(e) {
-      e.preventDefault();
-      dropzone.classList.add('is-dragover');
-    });
+   /* ══════════════════════════════════════════════════════════
+       2. FORM SUBMISSION VIA FORMSPREE
+       ══════════════════════════════════════════════════════════ */
 
-    dropzone.addEventListener('dragleave', function() {
-      dropzone.classList.remove('is-dragover');
-    });
+   form.addEventListener('submit', function(e) {
+         e.preventDefault();
 
-    /* ── Drop ───────────────────────────────────────────────── */
+                             if (!submitBtn) return;
 
-    dropzone.addEventListener('drop', function(e) {
-      e.preventDefault();
-      dropzone.classList.remove('is-dragover');
+                             // Show sending state
+                             var originalText = submitBtn.textContent;
+         submitBtn.textContent = 'TRANSMITTING...';
+         submitBtn.disabled = true;
+         submitBtn.style.background = 'var(--accent-blue)';
+         submitBtn.style.color = 'var(--bg-deep)';
 
-      const files = e.dataTransfer.files;
-      if (files && files.length > 0) {
-        // Try to assign dropped files to the real input
-        // (not always possible due to browser security, but works in most cases)
-        try {
-          fileInput.files = files;
-        } catch (err) {
-          // Browser blocked — just display the names
-        }
-        displaySelectedFiles(files);
-      }
-    });
-  }
+                             // Build FormData from the form
+                             var data = new FormData(form);
 
-  /**
-   * Update the dropzone UI to show selected file names
-   * @param {FileList} files
-   */
-  function displaySelectedFiles(files) {
-    if (!dropzone) return;
+                             // POST to Formspree
+                             fetch(FORMSPREE_URL, {
+                                     method: 'POST',
+                                     body: data,
+                                     headers: { 'Accept': 'application/json' }
+                             })
+         .then(function(response) {
+                 if (response.ok) {
+                           showSuccess();
+                 } else {
+                           return response.json().then(function(json) {
+                                       var msg = (json.errors && json.errors.length)
+                                         ? json.errors.map(function(err) { return err.message; }).join(', ')
+                                                     : 'Submission failed. Please try again.';
+                                       showError(msg);
+                           });
+                 }
+         })
+         .catch(function() {
+                 showError('Network error \u2014 check your connection and try again.');
+         });
+   });
 
-    const names = Array.from(files).map(function(f) { return f.name; });
-    const hintEl = dropzone.querySelector('.dropzone-hint');
-    const iconEl = dropzone.querySelector('.dropzone-icon');
+   /* ── Success state ──────────────────────────────────────── */
+   function showSuccess() {
+         if (!submitBtn) return;
+         submitBtn.textContent  = '\u2713 QUOTE SUBMITTED \u2014 WE\u2019LL BE IN TOUCH WITHIN 24HRS';
+         submitBtn.style.background = 'var(--accent-blue)';
+         submitBtn.style.color      = 'var(--bg-deep)';
+         submitBtn.style.boxShadow  = 'var(--glow-blue)';
+         submitBtn.disabled         = true;
 
-    if (hintEl) {
-      hintEl.textContent = '\u2713 ' + names.join(', ');
-    }
-    if (iconEl) {
-      iconEl.textContent = '\u2713';
-    }
+      var formSection = document.getElementById('quote');
+         if (formSection) {
+                 formSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+         }
+   }
 
-    dropzone.classList.add('has-files');
-    dropzone.classList.remove('is-dragover');
-  }
+   /* ── Error state ────────────────────────────────────────── */
+   function showError(msg) {
+         if (!submitBtn) return;
+         submitBtn.textContent    = '\u2717 ' + msg;
+         submitBtn.style.background = '#CC4400';
+         submitBtn.style.color      = '#fff';
+         submitBtn.disabled         = false;
 
-  /* ══════════════════════════════════════════════════════════
-     2. FORM SUBMISSION
-     ══════════════════════════════════════════════════════════ */
-
-  form.addEventListener('submit', function(e) {
-    e.preventDefault();
-
-    // Collect all form data
-    // const data = new FormData(form);
-
-    // Use data with fetch() when wiring to a real endpoint:
-    //
-    // fetch('https://your-endpoint.com/quote', {
-    //   method: 'POST',
-    //   body: data
-    // })
-    // .then(res => res.json())
-    // .then(result => showSuccess())
-    // .catch(err => showError(err));
-
-    // For now: show inline success state
-    showSuccess();
-  });
-
-  /* ── Success state ────────────────────────────────────────── */
-
-  function showSuccess() {
-    if (!submitBtn) return;
-
-    submitBtn.textContent = '\u2713 QUOTE SUBMITTED \u2014 WE\'LL BE IN TOUCH WITHIN 24HRS';
-    submitBtn.style.background   = 'var(--accent-blue)';
-    submitBtn.style.color        = 'var(--bg-deep)';
-    submitBtn.style.boxShadow    = 'var(--glow-blue)';
-    submitBtn.disabled           = true;
-
-    // Optionally scroll back to top of form
-    const formSection = document.getElementById('quote');
-    if (formSection) {
-      formSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }
-  }
+      // Reset button after 5 seconds so user can retry
+      setTimeout(function() {
+              submitBtn.textContent    = '\u25B8 SUBMIT QUOTE REQUEST';
+              submitBtn.style.background = 'var(--accent-orange)';
+              submitBtn.style.color      = '#030810';
+              submitBtn.style.boxShadow  = '';
+      }, 5000);
+   }
 
 })();
