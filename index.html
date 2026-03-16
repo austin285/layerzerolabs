@@ -5,36 +5,19 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content="Layer Zero Labs — Precision 3D Print Studio. FDM Printing, Custom Prototyping, Multi-Material. Georgia-based. Where digital concepts become physical reality." />
   <title>Layer Zero Labs — 3D Print Studio</title>
-
-  <!-- ── Google Fonts ─────────────────────────────────────── -->
-  <!-- Orbitron:  Display / brand headlines                   -->
-  <!-- Exo 2:     Body copy / UI labels                       -->
-  <!-- Share Tech Mono: Monospace accents / code-style labels -->
-  <link rel="preconnect" href="https://fonts.hgoogleapis.com" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link
     href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;900&family=Exo+2:ital,wght@0,300;0,400;0,500;0,600;1,300&family=Share+Tech+Mono&display=swap"
     rel="stylesheet"
   />
-
-  <!-- ── Stylesheets (order matters) ─────────────────────── -h->
   <link rel="stylesheet" href="css/base.css" />
   <link rel="stylesheet" href="css/animations.css" />
   <link rel="stylesheet" href="css/layout.css" />
   <link rel="stylesheet" href="css/components.css" />
 </head>
 <body>
-
-  <!-- ════════════════════════════════════════════════════════
-       CUSTOM CURSOR
-       Two elements: outer ring (lags) + inner dot (instant)
-       Animated by js/cursor.js
-  ═════════════════════════════════════════════════════════ -->
   <div id="cursor-outer" aria-hidden="true"></div>
   <div id="cursor-inner" aria-hidden="true"></div>
-
-  <!-- ════════════════════════════════════════════════════════
-       NAVIGATION
-  ═════════════════════════════════════════════════════════ -->
   <nav id="main-nav" role="navigation" aria-label="Main navigation">
     <a href="#hero" class="nav-logo" aria-label="Layer Zero Labs home">
       LAYER<span class="glyph-zero">Ø</span>LABS
@@ -47,14 +30,8 @@
       <li><a href="#quote" class="nav-cta">Get Quote</a></li>
     </ul>
   </nav>
-
-  <!-- ════════════════════════════════════════════════════════
-       HERO
-       Three.js canvas lives inside here (injected by hero.js)
-  ═════════════════════════════════════════════════════════ -->
   <section id="hero" aria-label="Hero">
     <canvas id="hero-canvas" aria-hidden="true"></canvas>
-
     <div class="hero-content">
       <p class="hero-eyebrow">// LAYER 0 · THE PHYSICAL LAYER · GEORGIA</p>
       <h1 class="hero-brand">
@@ -67,12 +44,10 @@
         <a href="#gallery" class="btn-secondary">VIEW GALLERY</a>
       </div>
     </div>
-
     <div class="hero-scroll" aria-hidden="true">
       <span>SCROLL</span>
       <div class="scroll-line"></div>
     </div>
-
     <div class="hero-stats" aria-label="Key specifications">
       <div class="stat-item">
         <div class="stat-number">FDM</div>
@@ -96,17 +71,11 @@
       </div>
     </div>
   </section>
-
-  <!-- ════════════════════════════════════════════════════════
-       SERVICES
-  ═════════════════════════════════════════════════════════ -->
   <section id="services">
     <div class="section-inner">
       <p class="section-label reveal">Capabilities</p>
       <h2 class="section-title reveal">What We <em>Build</em></h2>
-
       <div class="services-grid">
-
         <article class="service-card reveal reveal-d1">
           <span class="card-number" aria-hidden="true">01</span>
           <span class="card-icon" aria-hidden="true">⬡</span>
@@ -120,20 +89,18 @@
             <span class="tag">CF-NYLON</span>
           </div>
         </article>
-
         <article class="service-card reveal reveal-d2">
           <span class="card-number" aria-hidden="true">02</span>
-          <span class="card-icon" aria-hidden="true">◈</span>
+          <span class="card-icon" aria-hidden="true">⬡</span>
           <h3 class="card-name">MULTI-MATERIAL FDM</h3>
           <p class="card-desc">Multi-color and multi-material printing via AMS. Combine materials in a single build for functional two-tone parts, color-mapped models, and soluble-support complex geometries.</p>
           <div class="card-tags">
             <span class="tag">MULTI-COLOR</span>
             <span class="tag">DUAL-TONE</span>
-            <span class="tag">DENTAL</span>
-            <span class="tag">FLEXIBLE</span>
+            <span class="tag">SOLUBLE-SUPPORT</span>
+            <span class="tag">AMS</span>
           </div>
         </article>
-
         <article class="service-card reveal reveal-d3">
           <span class="card-number" aria-hidden="true">03</span>
           <span class="card-icon" aria-hidden="true">◇</span>
@@ -145,7 +112,6 @@
             <span class="tag">CONSULT</span>
           </div>
         </article>
-
         <article class="service-card reveal reveal-d1">
           <span class="card-number" aria-hidden="true">04</span>
           <span class="card-icon" aria-hidden="true">⊞</span>
@@ -157,7 +123,6 @@
             <span class="tag">BAMBU STUDIO</span>
           </div>
         </article>
-
         <article class="service-card reveal reveal-d2">
           <span class="card-number" aria-hidden="true">05</span>
           <span class="card-icon" aria-hidden="true">✦</span>
@@ -170,7 +135,6 @@
             <span class="tag">ASSEMBLY</span>
           </div>
         </article>
-
         <article class="service-card reveal reveal-d3">
           <span class="card-number" aria-hidden="true">06</span>
           <span class="card-icon" aria-hidden="true">⬢</span>
@@ -182,20 +146,13 @@
             <span class="tag">SHIPPING</span>
           </div>
         </article>
-
       </div><!-- /.services-grid -->
     </div><!-- /.section-inner -->
   </section>
-
-  <!-- ════════════════════════════════════════════════════════
-       GALLERY
-  ═════════════════════════════════════════════════════════ -->
   <section id="gallery">
     <div class="section-inner">
       <p class="section-label reveal">Portfolio</p>
       <h2 class="section-title reveal">Print <em>Gallery</em></h2>
-
-      <!-- Filter buttons — add data-category to .gallery-item to activate filtering -->
       <div class="gallery-filter reveal" role="group" aria-label="Filter by category">
         <button class="filter-btn is-active" type="button">All</button>
         <button class="filter-btn" type="button">Functional</button>
@@ -203,16 +160,7 @@
         <button class="filter-btn" type="button">Mechanical</button>
         <button class="filter-btn" type="button">Custom</button>
       </div>
-
       <div class="gallery-grid">
-        <!--
-          To add real photos:
-            1. Drop images into assets/
-            2. Replace .gallery-placeholder with:
-               <img src="assets/your-photo.jpg" alt="Description" loading="lazy" />
-            3. Add data-category="functional" (etc.) to filter
-        -->
-
         <div class="gallery-item reveal" data-category="functional">
           <div class="gallery-placeholder">
             <div class="placeholder-icon" aria-hidden="true">⬡</div>
@@ -225,7 +173,6 @@
             </div>
           </div>
         </div>
-
         <div class="gallery-item reveal reveal-d1" data-category="custom">
           <div class="gallery-placeholder">
             <div class="placeholder-icon" aria-hidden="true">◈</div>
@@ -238,7 +185,6 @@
             </div>
           </div>
         </div>
-
         <div class="gallery-item reveal reveal-d2" data-category="mechanical">
           <div class="gallery-placeholder">
             <div class="placeholder-icon" aria-hidden="true">◇</div>
@@ -251,7 +197,6 @@
             </div>
           </div>
         </div>
-
         <div class="gallery-item reveal reveal-d1" data-category="mechanical">
           <div class="gallery-placeholder">
             <div class="placeholder-icon" aria-hidden="true">⬢</div>
@@ -264,7 +209,6 @@
             </div>
           </div>
         </div>
-
         <div class="gallery-item reveal reveal-d2" data-category="art">
           <div class="gallery-placeholder">
             <div class="placeholder-icon" aria-hidden="true">⊞</div>
@@ -277,7 +221,6 @@
             </div>
           </div>
         </div>
-
         <div class="gallery-item reveal" data-category="functional">
           <div class="gallery-placeholder">
             <div class="placeholder-icon" aria-hidden="true">✦</div>
@@ -290,7 +233,6 @@
             </div>
           </div>
         </div>
-
         <div class="gallery-item reveal reveal-d1" data-category="art">
           <div class="gallery-placeholder">
             <div class="placeholder-icon" aria-hidden="true">◉</div>
@@ -303,7 +245,6 @@
             </div>
           </div>
         </div>
-
         <div class="gallery-item reveal reveal-d2" data-category="custom">
           <div class="gallery-placeholder">
             <div class="placeholder-icon" aria-hidden="true">⬡</div>
@@ -316,21 +257,14 @@
             </div>
           </div>
         </div>
-
       </div><!-- /.gallery-grid -->
     </div><!-- /.section-inner -->
   </section>
-
-  <!-- ════════════════════════════════════════════════════════
-       PROCESS
-  ═════════════════════════════════════════════════════════ -->
   <section id="process">
     <div class="section-inner">
       <p class="section-label reveal">How It Works</p>
       <h2 class="section-title reveal">From File to <em>Finished</em></h2>
-
       <div class="process-track" role="list">
-
         <div class="process-step reveal reveal-d1" role="listitem">
           <div class="step-node" aria-hidden="true">
             <div>
@@ -342,7 +276,6 @@
           <p class="step-desc">Submit your STL, OBJ, or STEP file through the quote form. Include material preference, quantity, and any finish requirements.</p>
           <div class="step-detail">// STL · OBJ · STEP · 3MF</div>
         </div>
-
         <div class="process-step reveal reveal-d2" role="listitem">
           <div class="step-node" aria-hidden="true">
             <div>
@@ -354,7 +287,6 @@
           <p class="step-desc">We analyze your file for printability, flag geometry issues, suggest material upgrades, and send back a detailed quote within 24 hours.</p>
           <div class="step-detail">// RESPONSE TIME ≤ 24HRS</div>
         </div>
-
         <div class="process-step reveal reveal-d3" role="listitem">
           <div class="step-node" aria-hidden="true">
             <div>
@@ -366,7 +298,6 @@
           <p class="step-desc">Parts enter the print queue. We handle slicing, support optimization, post-processing, and QC inspection before packaging.</p>
           <div class="step-detail">// STD TURNAROUND: 48–72HRS</div>
         </div>
-
         <div class="process-step reveal reveal-d4" role="listitem">
           <div class="step-node" aria-hidden="true">
             <div>
@@ -378,34 +309,25 @@
           <p class="step-desc">Parts are securely packaged and shipped with tracking. Georgia local pickup available. Rush options on request.</p>
           <div class="step-detail">// GA LOCAL PICKUP AVAILABLE</div>
         </div>
-
       </div><!-- /.process-track -->
     </div><!-- /.section-inner -->
   </section>
-
-  <!-- ════════════════════════════════════════════════════════
-       ABOUT
-  ═════════════════════════════════════════════════════════ -->
   <section id="about">
     <div class="section-inner">
       <div class="about-grid">
-
-        <!-- Blueprint isometric visual -->
         <div class="about-visual reveal" aria-hidden="true">
           <div class="about-badge" style="top:18%;left:8%">
             <div class="badge-value">Ø</div>
             <div class="badge-label">Layer Zero</div>
           </div>
           <div class="about-badge" style="top:48%;right:4%">
-            <div class="badge-value">FDM+SLA</div>
-            <div class="badge-label">Dual Platform</div>
+            <div class="badge-value">FDM</div>
+            <div class="badge-label">Multi-Material</div>
           </div>
           <div class="about-badge" style="bottom:14%;left:18%">
             <div class="badge-value">GA</div>
             <div class="badge-label">Georgia Based</div>
           </div>
-
-          <!-- Inline SVG blueprint / isometric CAD drawing -->
           <svg viewBox="0 0 400 500"
                style="position:absolute;inset:0;width:100%;height:100%;opacity:.55"
                xmlns="http://www.w3.org/2000/svg"
@@ -420,7 +342,6 @@
             </defs>
             <rect width="400" height="500" fill="url(#grid-small)"/>
             <rect width="400" height="500" fill="url(#grid-large)"/>
-            <!-- Isometric cube wireframe -->
             <g transform="translate(200,130)">
               <polygon points="0,-75 85,-33 0,8 -85,-33"    fill="none" stroke="rgba(0,200,255,.65)" stroke-width="1.5"/>
               <polygon points="85,-33 85,65 0,105 0,8"      fill="none" stroke="rgba(0,200,255,.4)"  stroke-width="1.5"/>
@@ -431,7 +352,6 @@
               <circle cx="85"  cy="-33" r="3" fill="rgba(255,107,0,.8)"/>
               <circle cx="-85" cy="-33" r="3" fill="rgba(255,107,0,.8)"/>
             </g>
-            <!-- Dimension lines -->
             <line x1="300" y1="98"  x2="330" y2="98"  stroke="rgba(255,107,0,.6)" stroke-width="1"/>
             <line x1="300" y1="240" x2="330" y2="240" stroke="rgba(255,107,0,.6)" stroke-width="1"/>
             <line x1="315" y1="98"  x2="315" y2="240" stroke="rgba(255,107,0,.5)" stroke-width=".5"/>
@@ -442,14 +362,12 @@
             </text>
           </svg>
         </div>
-
-        <!-- Copy -->
         <div class="about-text">
           <p class="section-label reveal">The Story</p>
           <h2 class="section-title reveal">Built From <em>Layer Zero</em></h2>
           <div style="margin-top:30px">
             <p class="reveal">
-              <strong>Layer Zero isn’t just a name — it’s a philosophy.</strong>
+              <strong>Layer Zero isn't just a name — it's a philosophy.</strong>
               In networking, Layer 0 is the physical layer: the actual wire, the actual signal,
               the real substrate everything digital depends on.
             </p>
@@ -465,37 +383,28 @@
             </p>
             <ul class="capability-list reveal">
               <li class="capability-item"><strong>Bambu Lab X1C</strong> — high-speed multi-material FDM</li>
-              <li class="capability-item"><strong>Elegoo Saturn 3 Ultra</strong> — 12K MSLA resin printing</li>
+              <li class="capability-item"><strong>Bambu Lab X1C + AMS</strong> — multi-material, high-speed FDM</li>
               <li class="capability-item"><strong>Fusion 360 + Bambu Studio</strong> — full CAD and slicer pipeline</li>
               <li class="capability-item"><strong>Full post-processing</strong> — sand, prime, paint, embed, assemble</li>
               <li class="capability-item"><strong>Georgia-based</strong> — local pickup + nationwide shipping</li>
             </ul>
           </div>
         </div>
-
       </div><!-- /.about-grid -->
     </div><!-- /.section-inner -->
   </section>
-
-  <!-- ════════════════════════════════════════════════════════
-       QUOTE / CONTACT
-  ═════════════════════════════════════════════════════════ -->
   <section id="quote">
     <div class="section-inner">
       <p class="section-label reveal">Get Started</p>
       <h2 class="section-title reveal">Request a <em>Quote</em></h2>
-
       <div class="quote-grid">
-
-        <!-- Left: info block -->
         <div class="quote-info reveal">
-          <h3>Let’s build something.</h3>
+          <h3>Let's build something.</h3>
           <p>
             Fill out the form with your project details and attach your file.
-            We’ll review the geometry, recommend the best process and material,
+            We'll review the geometry, recommend the best process and material,
             and get back to you with a full quote within 24 hours.
           </p>
-
           <div class="contact-method">
             <div class="contact-icon" aria-hidden="true">📧</div>
             <div>
@@ -503,7 +412,6 @@
               <div class="contact-value">hello@layerzerolabs.com</div>
             </div>
           </div>
-
           <div class="contact-method">
             <div class="contact-icon" aria-hidden="true">📍</div>
             <div>
@@ -511,7 +419,6 @@
               <div class="contact-value">Georgia, USA · Local Pickup Available</div>
             </div>
           </div>
-
           <div class="contact-method">
             <div class="contact-icon" aria-hidden="true">⏱</div>
             <div>
@@ -520,8 +427,6 @@
             </div>
           </div>
         </div>
-
-        <!-- Right: quote form -->
         <form id="quote-form" class="quote-form reveal" novalidate>
           <div class="form-row">
             <div class="form-group">
@@ -533,7 +438,6 @@
               <input id="last-name" name="last_name" type="text" placeholder="Reid" required />
             </div>
           </div>
-
           <div class="form-row">
             <div class="form-group">
               <label for="email">Email</label>
@@ -544,7 +448,6 @@
               <input id="phone" name="phone" type="tel" placeholder="+1 (555) 000-0000" />
             </div>
           </div>
-
           <div class="form-row">
             <div class="form-group">
               <label for="technology">Print Technology</label>
@@ -552,8 +455,6 @@
                 <option value="" disabled selected>Select process</option>
                 <option>FDM — Standard</option>
                 <option>FDM — High Detail</option>
-                <option>SLA Resin — Standard</option>
-                <option>SLA Resin — Ultra Fine</option>
                 <option>Not Sure — Recommend</option>
               </select>
             </div>
@@ -567,14 +468,10 @@
                 <option>TPU (Flexible)</option>
                 <option>CF-PETG</option>
                 <option>CF-Nylon</option>
-                <option>Resin — Standard</option>
-                <option>Resin — ABS-Like</option>
-                <option>Resin — Flexible</option>
                 <option>Not Sure</option>
               </select>
             </div>
           </div>
-
           <div class="form-row">
             <div class="form-group">
               <label for="quantity">Quantity</label>
@@ -585,7 +482,6 @@
               <input id="deadline" name="deadline" type="date" />
             </div>
           </div>
-
           <div class="form-group">
             <label for="description">Project Description</label>
             <textarea
@@ -594,7 +490,6 @@
               placeholder="Describe your project — dimensions, use case, special requirements, tolerance needs, finish level..."
             ></textarea>
           </div>
-
           <div class="form-group">
             <label>Attach File</label>
             <div id="file-dropzone" class="file-dropzone" role="button" tabindex="0" aria-label="Click or drag to upload 3D file">
@@ -611,19 +506,13 @@
               />
             </div>
           </div>
-
           <button id="submit-btn" type="submit" class="btn-submit">
             ▸ SUBMIT QUOTE REQUEST
           </button>
         </form>
-
       </div><!-- /.quote-grid -->
     </div><!-- /.section-inner -->
   </section>
-
-  <!-- ════════════════════════════════════════════════════════
-       FOOTER
-  ═════════════════════════════════════════════════════════ -->
   <footer id="main-footer" role="contentinfo">
     <div class="footer-logo">LAYER<span class="glyph-zero">Ø</span>LABS</div>
     <div class="footer-copy">© 2025 LAYER ZERO LABS · ALL RIGHTS RESERVED · GEORGIA, USA</div>
@@ -633,23 +522,11 @@
       <a href="#quote">Quote</a>
     </nav>
   </footer>
-
-  <!-- ════════════════════════════════════════════════════════
-       SCRIPTS
-       Load order matters:
-         1. Three.js (CDN) — must exist before hero.js runs
-         2. cursor.js      — sets up RAF loop immediately
-         3. hero.js        — starts Three.js scene
-         4. scroll.js      — wires IntersectionObserver
-         5. gallery.js     — filter buttons
-         6. form.js        — quote form + file drop
-  ═════════════════════════════════════════════════════════ -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
   <script src="js/cursor.js"></script>
   <script src="js/hero.js"></script>
   <script src="js/scroll.js"></script>
   <script src="js/gallery.js"></script>
   <script src="js/form.js"></script>
-
 </body>
 </html>
