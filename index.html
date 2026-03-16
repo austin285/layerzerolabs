@@ -27,7 +27,8 @@
       <li><a href="#gallery">Gallery</a></li>
       <li><a href="#process">Process</a></li>
       <li><a href="#about">About</a></li>
-      <li><a href="#quote" class="nav-cta">Get Quote</a></li>
+            <li><a href="#image-to-print">Image to Print</a></li>
+<li><a href="#quote" class="nav-cta">Get Quote</a></li>
     </ul>
   </nav>
   <section id="hero" aria-label="Hero">
@@ -393,6 +394,135 @@
       </div><!-- /.about-grid -->
     </div><!-- /.section-inner -->
   </section>
+
+  <section id="image-to-print" style="background:var(--bg-dark);border-top:1px solid rgba(0,168,255,0.1)">
+    <div class="section-inner">
+      <p class="section-label reveal">Image to Print</p>
+      <h2 class="section-title reveal">Bring Your <em>Vision</em> to Life</h2>
+      <p class="section-intro reveal" style="max-width:680px;margin:0 auto 50px;text-align:center;color:rgba(255,255,255,.65);font-family:var(--font-body);font-size:1.05rem;line-height:1.7">
+        Got a logo, sketch, photo, or reference image? We'll analyze it,
+        model it, and turn it into a physical object. Upload your file,
+        describe what you're imagining, and we'll handle the rest — from
+        geometry interpretation to final print.
+      </p>
+
+      <div class="quote-grid">
+        <div class="quote-info reveal">
+          <h3>From pixels to plastic.</h3>
+          <p>
+            We accept photos, hand-drawn sketches, logos, vector files, and
+            reference art. Even if your image isn't perfectly clean, describe
+            what you want and we'll interpret it. No CAD experience required.
+          </p>
+          <div class="contact-method">
+            <div class="contact-icon" aria-hidden="true">🖼</div>
+            <div>
+              <div class="contact-label">Accepted Formats</div>
+              <div class="contact-value">JPG, PNG, SVG, AI, PDF</div>
+            </div>
+          </div>
+          <div class="contact-method">
+            <div class="contact-icon" aria-hidden="true">📐</div>
+            <div>
+              <div class="contact-label">We Handle</div>
+              <div class="contact-value">Modeling, Scaling, Print Optimization</div>
+            </div>
+          </div>
+          <div class="contact-method">
+            <div class="contact-icon" aria-hidden="true">⏱</div>
+            <div>
+              <div class="contact-label">Quote Turnaround</div>
+              <div class="contact-value">24–48 hours from submission</div>
+            </div>
+          </div>
+        </div>
+
+        <form id="image-form" class="quote-form reveal" action="https://formspree.io/f/xojknlvk" method="POST" novalidate>
+          <input type="hidden" name="_subject" value="LZL Image-to-Print Request" />
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="img-first-name">First Name</label>
+              <input id="img-first-name" name="first_name" type="text" placeholder="Austin" required />
+            </div>
+            <div class="form-group">
+              <label for="img-last-name">Last Name</label>
+              <input id="img-last-name" name="last_name" type="text" placeholder="Reid" required />
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="img-email">Email</label>
+              <input id="img-email" name="email" type="email" placeholder="you@email.com" required />
+            </div>
+            <div class="form-group">
+              <label for="img-phone">Phone (Optional)</label>
+              <input id="img-phone" name="phone" type="tel" placeholder="+1 (555) 000-0000" />
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label>Upload Your Image or Reference</label>
+            <div id="image-dropzone" class="file-dropzone" role="button" tabindex="0" aria-label="Click or drag to upload image file">
+              <div class="dropzone-icon" aria-hidden="true">🖼</div>
+              <p class="dropzone-hint">Drop your JPG, PNG, SVG, AI, or PDF here — or click to browse</p>
+              <span class="dropzone-types">// MAX 25MB · JPG · PNG · SVG · AI · PDF</span>
+              <input id="image-file-input" type="file" name="image" accept=".jpg,.jpeg,.png,.svg,.ai,.pdf" style="display:none" aria-hidden="true" />
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="img-description">Describe What You Want Made</label>
+            <textarea id="img-description" name="description" style="min-height:130px" placeholder="Describe the object — what it is, how it will be used, any functional requirements. Include rough dimensions if you know them (e.g. '6 inches tall', 'fits in my hand'). The more detail the better."></textarea>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="img-dimensions">Dimensions / Size</label>
+              <input id="img-dimensions" name="dimensions" type="text" placeholder="e.g. 6in tall, 100mm wide, wallet-sized" />
+            </div>
+            <div class="form-group">
+              <label for="img-quantity">Quantity</label>
+              <input id="img-quantity" name="quantity" type="number" placeholder="1" min="1" />
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="img-material">Material Preference</label>
+              <select id="img-material" name="material">
+                <option value="" disabled selected>Select material</option>
+                <option>Not Sure — Recommend Me</option>
+                <option>PLA</option>
+                <option>PETG</option>
+                <option>ABS</option>
+                <option>TPU (Flexible)</option>
+                <option>CF-PETG</option>
+                <option>CF-Nylon</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="img-finish">Finish Level</label>
+              <select id="img-finish" name="finish">
+                <option value="" disabled selected>Select finish</option>
+                <option>Raw Print</option>
+                <option>Sanded / Smoothed</option>
+                <option>Primed</option>
+                <option>Fully Painted</option>
+                <option>Not Sure</option>
+              </select>
+            </div>
+          </div>
+
+          <button id="image-submit-btn" type="submit" class="btn-submit">
+            ▸ SUBMIT IMAGE REQUEST
+          </button>
+        </form>
+      </div><!-- /.quote-grid -->
+    </div><!-- /.section-inner -->
+  </section>
+
   <section id="quote">
     <div class="section-inner">
       <p class="section-label reveal">Get Started</p>
