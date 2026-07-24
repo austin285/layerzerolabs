@@ -6,6 +6,10 @@
 /* ── KEYFRAMES ──────────────────────────────────────────────── */
 
 /* Fade up — used for hero entrance stagger */
+@keyframes sealReveal {
+  from { opacity: 0; transform: translateY(12px) scale(0.94); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
+}
 @keyframes fadeUp {
   from {
     opacity: 0;
