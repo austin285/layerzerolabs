@@ -162,13 +162,21 @@
   padding: 0 24px;
 }
 
+.hero-seal {
+  width: clamp(120px, 18vw, 230px);
+  margin: 0 auto 18px;
+  filter: drop-shadow(0 0 24px rgba(0, 200, 255, 0.24));
+  opacity: 0;
+  animation: sealReveal 1s 0.1s forwards;
+}
+
 .hero-eyebrow {
   font-family: var(--font-mono);
   font-size: 0.7rem;
   letter-spacing: 0.45em;
   color: var(--accent-blue);
   text-transform: uppercase;
-  margin-bottom: 32px;
+  margin-bottom: 22px;
   opacity: 0;
   animation: fadeUp 0.8s 0.2s forwards;
 }
@@ -299,6 +307,11 @@
 #services {
   background: var(--bg-dark);
   border-top: 1px solid rgba(0, 168, 255, 0.1);
+  border-bottom: 1px solid rgba(0, 168, 255, 0.1);
+}
+
+#substrate {
+  background: var(--bg-deep);
   border-bottom: 1px solid rgba(0, 168, 255, 0.1);
 }
 
