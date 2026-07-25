@@ -6,7 +6,7 @@
 
 /* ── BUTTONS ────────────────────────────────────────────────── */
 
-/* Primary — orange fill, angled clip-path */
+/* Primary — Substrate coral action, angled clip-path */
 .btn-primary {
   display: inline-block;
   font-family: var(--font-display);
@@ -14,8 +14,8 @@
   font-weight: 700;
   letter-spacing: 0.15em;
   text-transform: uppercase;
-  color: #030810;
-  background: var(--accent-orange);
+  color: var(--bg-deep);
+  background: var(--accent-primary);
   padding: 16px 42px;
   clip-path: polygon(12px 0, 100% 0, calc(100% - 12px) 100%, 0 100%);
   transition: background 0.25s ease, box-shadow 0.25s ease;
@@ -34,8 +34,8 @@
 }
 
 .btn-primary:hover {
-  background: #FF8833;
-  box-shadow: var(--glow-orange);
+  background: #FF8178;
+  box-shadow: var(--glow-primary);
 }
 
 .btn-primary:hover::after { transform: translateX(100%); }
@@ -48,16 +48,16 @@
   font-weight: 600;
   letter-spacing: 0.15em;
   text-transform: uppercase;
-  color: var(--accent-blue);
-  border: 1px solid var(--accent-blue);
+  color: var(--accent-cyan);
+  border: 1px solid var(--accent-cyan);
   padding: 15px 36px;
   clip-path: polygon(12px 0, 100% 0, calc(100% - 12px) 100%, 0 100%);
   transition: background 0.25s ease, box-shadow 0.25s ease;
 }
 
 .btn-secondary:hover {
-  background: rgba(0, 200, 255, 0.1);
-  box-shadow: var(--glow-blue);
+  background: rgba(45, 212, 191, 0.09);
+  box-shadow: var(--glow-sm);
 }
 
 /* Submit / full-width */
@@ -69,8 +69,8 @@
   font-weight: 700;
   letter-spacing: 0.15em;
   text-transform: uppercase;
-  color: #030810;
-  background: var(--accent-orange);
+  color: var(--bg-deep);
+  background: var(--accent-primary);
   border: none;
   padding: 17px;
   clip-path: polygon(12px 0, 100% 0, calc(100% - 12px) 100%, 0 100%);
@@ -91,8 +91,8 @@
 }
 
 .btn-submit:hover {
-  background: #FF8833;
-  box-shadow: var(--glow-orange);
+  background: #FF8178;
+  box-shadow: var(--glow-primary);
 }
 
 .btn-submit:hover::after { transform: translateX(100%); }
@@ -116,7 +116,7 @@
 .service-card {
   position: relative;
   background: var(--bg-card);
-  border: 1px solid rgba(0, 168, 255, 0.15);
+  border: 1px solid var(--panel-border);
   padding: 36px;
   overflow: hidden;
   transition: border-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
@@ -131,7 +131,7 @@
   right: 0;
   width: 20px;
   height: 20px;
-  background: var(--accent-blue);
+  background: var(--accent-cyan);
   clip-path: polygon(0 0, 100% 100%, 100% 0);
   opacity: 0;
   transition: opacity 0.3s ease;
@@ -142,15 +142,17 @@
   content: '';
   position: absolute;
   inset: 0;
-  background: linear-gradient(135deg, rgba(0, 200, 255, 0.05) 0%, transparent 60%);
+  background:
+    repeating-linear-gradient(45deg, transparent 0 3px, rgba(255,255,255,.012) 3px 5px),
+    linear-gradient(135deg, rgba(45, 212, 191, 0.055) 0%, transparent 60%);
   opacity: 0;
   transition: opacity 0.3s ease;
 }
 
 .service-card:hover {
-  border-color: rgba(0, 200, 255, 0.55);
+  border-color: var(--panel-border-strong);
   transform: translateY(-4px);
-  box-shadow: 0 10px 40px rgba(0,0,0,0.4), 0 0 0 1px rgba(0,200,255,0.18);
+  box-shadow: 0 10px 40px rgba(0,0,0,0.35), 0 0 0 1px rgba(45,212,191,0.14);
 }
 
 .service-card:hover::before,
@@ -163,7 +165,7 @@
   font-family: var(--font-display);
   font-size: 2.8rem;
   font-weight: 900;
-  color: rgba(0, 168, 255, 0.06);
+  color: rgba(56, 189, 248, 0.07);
   line-height: 1;
   pointer-events: none;
 }
@@ -206,10 +208,10 @@
   font-family: var(--font-mono);
   font-size: 0.60rem;
   letter-spacing: 0.1em;
-  color: var(--accent-blue);
-  border: 1px solid rgba(0, 168, 255, 0.28);
+  color: var(--accent-cyan);
+  border: 1px solid rgba(45, 212, 191, 0.3);
   padding: 3px 9px;
-  background: rgba(0, 168, 255, 0.06);
+  background: rgba(45, 212, 191, 0.06);
 }
 
 /* ── SUBSTRATE PRODUCT PREVIEW ─────────────────────────────── */
@@ -483,7 +485,7 @@
 
 .process-step:hover .step-node {
   box-shadow: var(--glow-orange);
-  border-color: #FF8833;
+  border-color: #FFC26F;
 }
 
 .step-number {

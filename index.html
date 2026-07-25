@@ -18,10 +18,10 @@
     href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;900&family=Exo+2:ital,wght@0,300;0,400;0,500;0,600;1,300&family=Share+Tech+Mono&display=swap"
     rel="stylesheet"
   />
-  <link rel="stylesheet" href="css/base.css" />
-  <link rel="stylesheet" href="css/animations.css" />
-  <link rel="stylesheet" href="css/layout.css" />
-  <link rel="stylesheet" href="css/components.css" />
+  <link rel="stylesheet" href="css/base.css?v=20260725" />
+  <link rel="stylesheet" href="css/animations.css?v=20260725" />
+  <link rel="stylesheet" href="css/layout.css?v=20260725" />
+  <link rel="stylesheet" href="css/components.css?v=20260725" />
 </head>
 <body>
   <div id="cursor-outer" aria-hidden="true"></div>
@@ -29,7 +29,16 @@
   <nav id="main-nav" role="navigation" aria-label="Main navigation">
     <a href="#hero" class="nav-logo" aria-label="Layer Zero Labs home">LAYER<span class="glyph-zero">Ø</span>LABS
     </a>
-    <ul class="nav-links">
+    <button
+      class="nav-toggle"
+      type="button"
+      aria-expanded="false"
+      aria-controls="primary-navigation"
+      aria-label="Open navigation"
+    >
+      <span></span><span></span><span></span>
+    </button>
+    <ul id="primary-navigation" class="nav-links">
       <li><a href="#services">Services</a></li>
       <li><a href="#substrate">Substrate</a></li>
       <li><a href="#gallery">Gallery</a></li>
@@ -725,10 +734,10 @@
     </nav>
   </footer>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-  <script src="js/cursor.js"></script>
-  <script src="js/hero.js"></script>
-  <script src="js/scroll.js"></script>
-  <script src="js/gallery.js"></script>
-  <script src="js/form.js"></script>
+  <script src="js/cursor.js?v=20260725"></script>
+  <script src="js/hero.js?v=20260725"></script>
+  <script src="js/scroll.js?v=20260725"></script>
+  <script src="js/gallery.js?v=20260725"></script>
+  <script src="js/form.js?v=20260725"></script>
 </body>
 </html>
