@@ -120,7 +120,7 @@
    /* ── Success state ──────────────────────────────────────── */
    function showSuccess() {
          if (!submitBtn) return;
-         submitBtn.textContent  = '\u2713 QUOTE SUBMITTED \u2014 WE\u2019LL BE IN TOUCH WITHIN 24HRS';
+         submitBtn.textContent  = '\u2713 QUOTE RECEIVED \u2014 EXPECT A REPLY IN 1\u20132 BUSINESS DAYS';
          submitBtn.style.background = 'var(--accent-blue)';
          submitBtn.style.color      = 'var(--bg-deep)';
          submitBtn.style.boxShadow  = 'var(--glow-blue)';
@@ -142,7 +142,7 @@
 
       // Reset button after 5 seconds so user can retry
       setTimeout(function() {
-              submitBtn.textContent    = '\u25B8 SUBMIT QUOTE REQUEST';
+              submitBtn.textContent    = '\u25B8 REQUEST PRINT QUOTE';
               submitBtn.style.background = 'var(--accent-primary)';
               submitBtn.style.color      = 'var(--bg-deep)';
               submitBtn.style.boxShadow  = '';
@@ -261,7 +261,7 @@
   /* ── Success state ──────────────────────────────────────── */
   function showSuccess() {
     if (!submitBtn) return;
-    submitBtn.textContent = '\u2713 REQUEST RECEIVED \u2014 WE\u2019LL BE IN TOUCH WITHIN 48HRS';
+    submitBtn.textContent = '\u2713 REQUEST RECEIVED \u2014 EXPECT A REPLY IN 1\u20132 BUSINESS DAYS';
     submitBtn.style.background = 'var(--accent-blue)';
     submitBtn.style.color = 'var(--bg-deep)';
     submitBtn.style.boxShadow = 'var(--glow-blue)';
@@ -276,7 +276,7 @@
     submitBtn.style.color = '#fff';
     submitBtn.disabled = false;
     setTimeout(function() {
-      submitBtn.textContent = '\u25B8 SUBMIT IMAGE REQUEST';
+      submitBtn.textContent = '\u25B8 SEND IDEA FOR REVIEW';
       submitBtn.style.background = 'var(--accent-primary)';
       submitBtn.style.color = 'var(--bg-deep)';
       submitBtn.style.boxShadow = '';
