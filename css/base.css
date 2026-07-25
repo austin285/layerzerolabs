@@ -19,10 +19,10 @@
   --accent-primary2: #D94E45;
   --accent-orange:   #F6A84A;
   --accent-orange2:  #C97825;
-  --accent-cyan:     #2DD4BF;
-  --accent-cyan2:    #159A8A;
-  --accent-blue:     #38BDF8;
-  --accent-blue2:    #1586BE;
+  --accent-cyan:     #00E7FF;
+  --accent-cyan2:    #00A8C7;
+  --accent-blue:     #00C8FF;
+  --accent-blue2:    #007FCC;
 
   /* Chrome / Metal */
   --chrome:         #E6EDF5;
@@ -38,12 +38,12 @@
   --bp-heavy:       rgba(45, 212, 191, 0.14);
 
   /* Glow shadows */
-  --glow-blue:    0 0 15px rgba(56,189,248,.42), 0 0 40px rgba(56,189,248,.16);
+  --glow-blue:    0 0 15px rgba(0,200,255,.62), 0 0 42px rgba(0,200,255,.24);
   --glow-orange:  0 0 15px rgba(246,168,74,.38), 0 0 38px rgba(246,168,74,.14);
   --glow-primary: 0 0 15px rgba(255,107,95,.42), 0 0 36px rgba(255,107,95,.15);
-  --glow-sm:      0 0 8px rgba(45,212,191,.42), 0 0 20px rgba(45,212,191,.16);
-  --panel-border: rgba(56,189,248,.18);
-  --panel-border-strong: rgba(45,212,191,.42);
+  --glow-sm:      0 0 8px rgba(0,231,255,.58), 0 0 22px rgba(0,200,255,.22);
+  --panel-border: rgba(0,200,255,.22);
+  --panel-border-strong: rgba(0,231,255,.52);
 
   /* Typography scale */
   --font-display: 'Orbitron', sans-serif;
@@ -73,8 +73,8 @@ body {
   font-family: var(--font-body);
   background-color: var(--bg-deep);
   background-image:
-    linear-gradient(rgba(56,189,248,0.025) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(56,189,248,0.025) 1px, transparent 1px);
+    linear-gradient(rgba(0,200,255,0.032) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0,200,255,0.032) 1px, transparent 1px);
   background-size: 20px 20px;
   color: var(--text-primary);
   overflow-x: hidden;

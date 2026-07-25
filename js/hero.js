@@ -57,12 +57,12 @@
   /* ── Brand color palette (matches CSS variables) ──────────── */
 
   const palette = [
-    0x38BDF8, // --accent-blue
-    0x2DD4BF, // --accent-cyan
+    0x00C8FF, // --accent-blue
+    0x00E7FF, // --accent-cyan
     0xFF6B5F, // --accent-primary
     0xF6A84A, // --accent-orange
-    0x159A8A, // --accent-cyan2
-    0x1586BE, // --accent-blue2
+    0x00A8C7, // --accent-cyan2
+    0x007FCC, // --accent-blue2
     0xD94E45, // --accent-primary2
     0xC97825  // --accent-orange2
   ];

@@ -25,11 +25,11 @@
 @keyframes zeroGlow {
   from {
     -webkit-text-stroke-color: var(--accent-cyan);
-    filter: drop-shadow(0 0 10px rgba(45, 212, 191, 0.34));
+    filter: drop-shadow(0 0 12px rgba(0, 231, 255, 0.48));
   }
   to {
     -webkit-text-stroke-color: var(--accent-blue);
-    filter: drop-shadow(0 0 24px rgba(56, 189, 248, 0.62));
+    filter: drop-shadow(0 0 28px rgba(0, 200, 255, 0.78));
   }
 }
 
