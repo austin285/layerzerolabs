@@ -287,6 +287,94 @@
   line-height: 1.55;
 }
 
+.substrate-showcase {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(18px, 2.5vw, 30px);
+  margin-top: clamp(56px, 8vw, 104px);
+}
+
+.substrate-shot {
+  position: relative;
+  overflow: hidden;
+  margin: 0;
+  border: 1px solid rgba(0, 200, 255, 0.2);
+  background: rgba(3, 10, 18, 0.9);
+  box-shadow: 0 24px 70px rgba(0, 0, 0, 0.28);
+}
+
+.substrate-shot-featured {
+  grid-column: 1 / -1;
+}
+
+.substrate-shot::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border: 1px solid transparent;
+  box-shadow: inset 0 0 55px rgba(0, 200, 255, 0.04);
+  pointer-events: none;
+  transition: border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.substrate-shot:hover::after {
+  border-color: rgba(0, 231, 255, 0.42);
+  box-shadow: inset 0 0 70px rgba(0, 200, 255, 0.08), 0 0 28px rgba(0, 200, 255, 0.12);
+}
+
+.substrate-shot img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  filter: saturate(0.88) contrast(1.03);
+  transition: transform 0.45s ease, filter 0.45s ease;
+}
+
+.substrate-shot:hover img {
+  transform: scale(1.018);
+  filter: saturate(1.05) contrast(1.05);
+}
+
+.substrate-shot figcaption {
+  display: grid;
+  gap: 8px;
+  padding: 20px 22px 23px;
+  border-top: 1px solid rgba(0, 200, 255, 0.16);
+  background:
+    linear-gradient(90deg, rgba(0, 200, 255, 0.07), transparent 50%),
+    rgba(3, 10, 18, 0.96);
+}
+
+.substrate-shot figcaption span {
+  font-family: var(--font-mono);
+  font-size: 0.61rem;
+  letter-spacing: 0.16em;
+  color: var(--accent-blue);
+}
+
+.substrate-shot figcaption strong {
+  font-family: var(--font-body);
+  font-size: clamp(0.88rem, 1.3vw, 1rem);
+  font-weight: 500;
+  line-height: 1.45;
+  color: var(--text-secondary);
+}
+
+@media (max-width: 720px) {
+  .substrate-showcase {
+    grid-template-columns: 1fr;
+  }
+
+  .substrate-shot-featured {
+    grid-column: auto;
+  }
+
+  .substrate-shot figcaption {
+    padding: 17px 18px 20px;
+  }
+}
+
 /* ── GALLERY ────────────────────────────────────────────────── */
 
 .gallery-filter {
