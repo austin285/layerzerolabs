@@ -136,15 +136,15 @@
    function showError(msg) {
          if (!submitBtn) return;
          submitBtn.textContent    = '\u2717 ' + msg;
-         submitBtn.style.background = '#CC4400';
+         submitBtn.style.background = 'var(--accent-primary2)';
          submitBtn.style.color      = '#fff';
          submitBtn.disabled         = false;
 
       // Reset button after 5 seconds so user can retry
       setTimeout(function() {
               submitBtn.textContent    = '\u25B8 SUBMIT QUOTE REQUEST';
-              submitBtn.style.background = 'var(--accent-orange)';
-              submitBtn.style.color      = '#030810';
+              submitBtn.style.background = 'var(--accent-primary)';
+              submitBtn.style.color      = 'var(--bg-deep)';
               submitBtn.style.boxShadow  = '';
       }, 5000);
    }
@@ -272,13 +272,13 @@
   function showError(msg) {
     if (!submitBtn) return;
     submitBtn.textContent = '\u2717 SOMETHING WENT WRONG \u2014 EMAIL US DIRECTLY';
-    submitBtn.style.background = '#CC2200';
+    submitBtn.style.background = 'var(--accent-primary2)';
     submitBtn.style.color = '#fff';
     submitBtn.disabled = false;
     setTimeout(function() {
       submitBtn.textContent = '\u25B8 SUBMIT IMAGE REQUEST';
-      submitBtn.style.background = 'var(--accent-orange)';
-      submitBtn.style.color = '#030810';
+      submitBtn.style.background = 'var(--accent-primary)';
+      submitBtn.style.color = 'var(--bg-deep)';
       submitBtn.style.boxShadow = '';
     }, 4000);
   }

@@ -24,12 +24,12 @@
 /* Ø glyph blue-to-cyan glow pulse */
 @keyframes zeroGlow {
   from {
-    -webkit-text-stroke-color: var(--accent-blue);
-    filter: drop-shadow(0 0 10px rgba(0, 200, 255, 0.4));
+    -webkit-text-stroke-color: var(--accent-cyan);
+    filter: drop-shadow(0 0 10px rgba(45, 212, 191, 0.34));
   }
   to {
-    -webkit-text-stroke-color: #00FFFF;
-    filter: drop-shadow(0 0 28px rgba(0, 255, 255, 0.9));
+    -webkit-text-stroke-color: var(--accent-blue);
+    filter: drop-shadow(0 0 24px rgba(56, 189, 248, 0.62));
   }
 }
 
@@ -172,12 +172,12 @@
 body.cursor-hover #cursor-outer {
   width: 52px;
   height: 52px;
-  border-color: var(--accent-orange);
-  background: rgba(0, 200, 255, 0.05);
+  border-color: var(--accent-primary);
+  background: rgba(45, 212, 191, 0.05);
 }
 
 body.cursor-hover #cursor-inner {
-  background: var(--accent-orange);
+  background: var(--accent-primary);
 }
 
 /* ── NAVIGATION ACTIVE TRANSITION ───────────────────────────── */

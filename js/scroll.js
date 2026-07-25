@@ -104,4 +104,34 @@
   // Run once on load in case the page was refreshed mid-scroll
   updateActiveNav();
 
+  /* ══════════════════════════════════════════════════════════
+     3. MOBILE NAVIGATION
+     ══════════════════════════════════════════════════════════ */
+
+  const navToggle = document.querySelector('.nav-toggle');
+  const primaryNav = document.querySelector('#primary-navigation');
+
+  if (navToggle && primaryNav) {
+    function closeMobileNav() {
+      navToggle.setAttribute('aria-expanded', 'false');
+      navToggle.setAttribute('aria-label', 'Open navigation');
+      primaryNav.classList.remove('is-open');
+    }
+
+    navToggle.addEventListener('click', function() {
+      const isOpen = navToggle.getAttribute('aria-expanded') === 'true';
+      navToggle.setAttribute('aria-expanded', String(!isOpen));
+      navToggle.setAttribute('aria-label', isOpen ? 'Open navigation' : 'Close navigation');
+      primaryNav.classList.toggle('is-open', !isOpen);
+    });
+
+    primaryNav.addEventListener('click', function(event) {
+      if (event.target.closest('a')) closeMobileNav();
+    });
+
+    window.addEventListener('resize', function() {
+      if (window.innerWidth > 960) closeMobileNav();
+    });
+  }
+
 })();

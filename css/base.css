@@ -8,35 +8,42 @@
 :root {
 
   /* Backgrounds */
-  --bg-deep:        #030810;
-  --bg-dark:        #070F1A;
-  --bg-card:        #0A1828;
-  --bg-card-hover:  #0D2040;
+  --bg-deep:        #091017;
+  --bg-dark:        #101820;
+  --bg-card:        #17222D;
+  --bg-card-hover:  #21303D;
+  --bg-input:       #101A24;
 
   /* Brand Colors */
-  --accent-blue:    #00C8FF;
-  --accent-blue2:   #0080CC;
-  --accent-orange:  #FF6B00;
-  --accent-orange2: #CC4400;
-  --accent-purple:  #8B4FCC;
+  --accent-primary:  #FF6B5F;
+  --accent-primary2: #D94E45;
+  --accent-orange:   #F6A84A;
+  --accent-orange2:  #C97825;
+  --accent-cyan:     #2DD4BF;
+  --accent-cyan2:    #159A8A;
+  --accent-blue:     #38BDF8;
+  --accent-blue2:    #1586BE;
 
   /* Chrome / Metal */
-  --chrome:         #C8DDF0;
-  --chrome-dim:     #5A7A9A;
+  --chrome:         #E6EDF5;
+  --chrome-dim:     #9FB0C1;
 
   /* Text */
-  --text-primary:   #E0EEF8;
-  --text-secondary: #6A8AA8;
-  --text-dim:       #3A5A78;
+  --text-primary:   #F1F5F9;
+  --text-secondary: #CBD5E1;
+  --text-dim:       #8191A3;
 
   /* Blueprint grid lines */
-  --bp-line:        rgba(0, 168, 255, 0.12);
-  --bp-heavy:       rgba(0, 168, 255, 0.25);
+  --bp-line:        rgba(56, 189, 248, 0.08);
+  --bp-heavy:       rgba(45, 212, 191, 0.14);
 
   /* Glow shadows */
-  --glow-blue:   0 0 15px rgba(0,200,255,.6), 0 0 40px rgba(0,200,255,.3), 0 0 80px rgba(0,200,255,.1);
-  --glow-orange: 0 0 15px rgba(255,107,0,.6), 0 0 40px rgba(255,107,0,.3), 0 0 80px rgba(255,107,0,.1);
-  --glow-sm:     0 0 8px rgba(0,200,255,.7),  0 0 20px rgba(0,200,255,.3);
+  --glow-blue:    0 0 15px rgba(56,189,248,.42), 0 0 40px rgba(56,189,248,.16);
+  --glow-orange:  0 0 15px rgba(246,168,74,.38), 0 0 38px rgba(246,168,74,.14);
+  --glow-primary: 0 0 15px rgba(255,107,95,.42), 0 0 36px rgba(255,107,95,.15);
+  --glow-sm:      0 0 8px rgba(45,212,191,.42), 0 0 20px rgba(45,212,191,.16);
+  --panel-border: rgba(56,189,248,.18);
+  --panel-border-strong: rgba(45,212,191,.42);
 
   /* Typography scale */
   --font-display: 'Orbitron', sans-serif;
@@ -64,7 +71,11 @@ html {
 
 body {
   font-family: var(--font-body);
-  background: var(--bg-deep);
+  background-color: var(--bg-deep);
+  background-image:
+    linear-gradient(rgba(56,189,248,0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(56,189,248,0.025) 1px, transparent 1px);
+  background-size: 20px 20px;
   color: var(--text-primary);
   overflow-x: hidden;
   cursor: none; /* replaced by custom cursor */
@@ -144,7 +155,7 @@ section {
   font-family: var(--font-mono);
   font-size: 0.67rem;
   letter-spacing: 0.5em;
-  color: var(--accent-blue);
+  color: var(--accent-cyan);
   text-transform: uppercase;
   margin-bottom: 14px;
   display: flex;
@@ -156,7 +167,7 @@ section {
   content: '';
   width: 28px;
   height: 1px;
-  background: var(--accent-blue);
+  background: linear-gradient(90deg, var(--accent-blue), var(--accent-cyan));
   box-shadow: var(--glow-sm);
 }
 
@@ -168,11 +179,11 @@ section {
   line-height: 1.1;
 }
 
-/* Orange outlined accent word */
+/* Warm outlined accent word, matching Substrate's active-state language */
 .section-title em {
   font-style: normal;
   color: transparent;
-  -webkit-text-stroke: 1.5px var(--accent-orange);
+  -webkit-text-stroke: 1.5px var(--accent-primary);
 }
 
 /* ── UTILITY CLASSES ────────────────────────────────────────── */
