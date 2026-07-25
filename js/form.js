@@ -1,286 +1,139 @@
 /**
- * form.js — Layer Zero Labs
- *
- * Quote form behaviors:
- *   1. File drag-and-drop zone — accepts STL, OBJ, STEP, 3MF files
- *   2. Form submission via Formspree (https://formspree.io/f/xojknlvk)
- *
- * Submissions are sent to Formspree and forwarded to your linked email.
- * To change the destination email, update it in Formspree dashboard:
- *   https://formspree.io/forms/xojknlvk/settings
+ * Unified project request form.
+ * Formspree forwards submissions according to the form settings at:
+ * https://formspree.io/forms/xojknlvk/settings
  */
-
-(function initForm() {
-    'use strict';
-
-   /* ── Configuration ──────────────────────────────────────── */
-   var FORMSPREE_URL = 'https://formspree.io/f/xojknlvk';
-
-   /* ── Element references ─────────────────────────────────── */
-   var form      = document.getElementById('quote-form');
-    var dropzone  = document.getElementById('file-dropzone');
-    var fileInput = document.getElementById('file-input');
-    var submitBtn = document.getElementById('submit-btn');
-
-   if (!form) return;
-
-   /* ══════════════════════════════════════════════════════════
-       1. FILE DRAG-AND-DROP ZONE
-       ══════════════════════════════════════════════════════════ */
-
-   if (dropzone && fileInput) {
-         dropzone.addEventListener('click', function() {
-                 fileInput.click();
-         });
-
-      fileInput.addEventListener('change', function() {
-              if (fileInput.files && fileInput.files.length > 0) {
-                        displaySelectedFiles(fileInput.files);
-              }
-      });
-
-      dropzone.addEventListener('dragover', function(e) {
-              e.preventDefault();
-              dropzone.classList.add('is-dragover');
-      });
-
-      dropzone.addEventListener('dragenter', function(e) {
-              e.preventDefault();
-              dropzone.classList.add('is-dragover');
-      });
-
-      dropzone.addEventListener('dragleave', function() {
-              dropzone.classList.remove('is-dragover');
-      });
-
-      dropzone.addEventListener('drop', function(e) {
-              e.preventDefault();
-              dropzone.classList.remove('is-dragover');
-              var files = e.dataTransfer.files;
-              if (files && files.length > 0) {
-                        try { fileInput.files = files; } catch (err) { }
-                        displaySelectedFiles(files);
-              }
-      });
-   }
-
-   function displaySelectedFiles(files) {
-         if (!dropzone) return;
-         var names  = Array.from(files).map(function(f) { return f.name; });
-         var hintEl = dropzone.querySelector('.dropzone-hint');
-         var iconEl = dropzone.querySelector('.dropzone-icon');
-         if (hintEl) hintEl.textContent = '\u2713 ' + names.join(', ');
-         if (iconEl) iconEl.textContent = '\u2713';
-         dropzone.classList.add('has-files');
-         dropzone.classList.remove('is-dragover');
-   }
-
-   /* ══════════════════════════════════════════════════════════
-       2. FORM SUBMISSION VIA FORMSPREE
-       ══════════════════════════════════════════════════════════ */
-
-   form.addEventListener('submit', function(e) {
-         e.preventDefault();
-
-                             if (!submitBtn) return;
-
-                             // Show sending state
-                             var originalText = submitBtn.textContent;
-         submitBtn.textContent = 'TRANSMITTING...';
-         submitBtn.disabled = true;
-         submitBtn.style.background = 'var(--accent-blue)';
-         submitBtn.style.color = 'var(--bg-deep)';
-
-                             // Build FormData from the form
-                             var data = new FormData(form);
-
-                             // POST to Formspree
-                             fetch(FORMSPREE_URL, {
-                                     method: 'POST',
-                                     body: data,
-                                     headers: { 'Accept': 'application/json' }
-                             })
-         .then(function(response) {
-                 if (response.ok) {
-                           showSuccess();
-                 } else {
-                           return response.json().then(function(json) {
-                                       var msg = (json.errors && json.errors.length)
-                                         ? json.errors.map(function(err) { return err.message; }).join(', ')
-                                                     : 'Submission failed. Please try again.';
-                                       showError(msg);
-                           });
-                 }
-         })
-         .catch(function() {
-                 showError('Network error \u2014 check your connection and try again.');
-         });
-   });
-
-   /* ── Success state ──────────────────────────────────────── */
-   function showSuccess() {
-         if (!submitBtn) return;
-         submitBtn.textContent  = '\u2713 QUOTE RECEIVED \u2014 EXPECT A REPLY IN 1\u20132 BUSINESS DAYS';
-         submitBtn.style.background = 'var(--accent-blue)';
-         submitBtn.style.color      = 'var(--bg-deep)';
-         submitBtn.style.boxShadow  = 'var(--glow-blue)';
-         submitBtn.disabled         = true;
-
-      var formSection = document.getElementById('quote');
-         if (formSection) {
-                 formSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
-         }
-   }
-
-   /* ── Error state ────────────────────────────────────────── */
-   function showError(msg) {
-         if (!submitBtn) return;
-         submitBtn.textContent    = '\u2717 ' + msg;
-         submitBtn.style.background = 'var(--accent-primary2)';
-         submitBtn.style.color      = '#fff';
-         submitBtn.disabled         = false;
-
-      // Reset button after 5 seconds so user can retry
-      setTimeout(function() {
-              submitBtn.textContent    = '\u25B8 REQUEST PRINT QUOTE';
-              submitBtn.style.background = 'var(--accent-primary)';
-              submitBtn.style.color      = 'var(--bg-deep)';
-              submitBtn.style.boxShadow  = '';
-      }, 5000);
-   }
-
-})();
-
-
-/**
- * Image-to-Print form behaviors:
- * 1. Image drag-and-drop zone — accepts JPG, PNG, SVG, AI, PDF
- * 2. Form submission via Formspree
- */
-(function initImageForm() {
+(function initProjectForm() {
   'use strict';
 
-  /* ── Configuration ──────────────────────────────────────── */
   var FORMSPREE_URL = 'https://formspree.io/f/xojknlvk';
+  var MAX_FILES = 10;
+  var MAX_FILE_BYTES = 25 * 1024 * 1024;
+  var form = document.getElementById('quote-form');
+  var dropzone = document.getElementById('file-dropzone');
+  var fileInput = document.getElementById('file-input');
+  var submitBtn = document.getElementById('submit-btn');
+  var defaultButtonText = '\u25B8 SEND PROJECT FOR REVIEW';
 
-  /* ── Element references ─────────────────────────────────── */
-  var form       = document.getElementById('image-form');
-  var dropzone   = document.getElementById('image-dropzone');
-  var fileInput  = document.getElementById('image-file-input');
-  var submitBtn  = document.getElementById('image-submit-btn');
+  if (!form || !submitBtn) return;
 
-  if (!form) return;
-
-  /* ══════════════════════════════════════════════════════════
-     1. IMAGE DRAG-AND-DROP ZONE
-     ══════════════════════════════════════════════════════════ */
-  if (dropzone && fileInput) {
-
-    dropzone.addEventListener('click', function() {
-      fileInput.click();
-    });
-
-    fileInput.addEventListener('change', function() {
-      if (fileInput.files && fileInput.files.length > 0) {
-        displayFile(fileInput.files[0]);
-      }
-    });
-
-    dropzone.addEventListener('dragover', function(e) {
-      e.preventDefault();
-      dropzone.classList.add('is-dragover');
-    });
-
-    dropzone.addEventListener('dragenter', function(e) {
-      e.preventDefault();
-      dropzone.classList.add('is-dragover');
-    });
-
-    dropzone.addEventListener('dragleave', function() {
-      dropzone.classList.remove('is-dragover');
-    });
-
-    dropzone.addEventListener('drop', function(e) {
-      e.preventDefault();
-      dropzone.classList.remove('is-dragover');
-      var files = e.dataTransfer.files;
-      if (files && files.length > 0) {
-        try { fileInput.files = files; } catch (err) {}
-        displayFile(files[0]);
-      }
-    });
-  }
-
-  function displayFile(file) {
+  function setDropzoneMessage(message, isError) {
     if (!dropzone) return;
-    var hintEl = dropzone.querySelector('.dropzone-hint');
-    var iconEl = dropzone.querySelector('.dropzone-icon');
-    if (hintEl) hintEl.textContent = '\u2713 ' + file.name;
-    if (iconEl) iconEl.textContent = '\u2713';
-    dropzone.classList.add('has-files');
+    var hint = dropzone.querySelector('.dropzone-hint');
+    var icon = dropzone.querySelector('.dropzone-icon');
+    if (hint) hint.textContent = message;
+    if (icon) icon.textContent = isError ? '!' : '\u2713';
+    dropzone.classList.toggle('has-files', !isError);
     dropzone.classList.remove('is-dragover');
   }
 
-  /* ══════════════════════════════════════════════════════════
-     2. FORM SUBMISSION VIA FORMSPREE
-     ══════════════════════════════════════════════════════════ */
-  form.addEventListener('submit', function(e) {
-    e.preventDefault();
-    if (!submitBtn) return;
+  function validateFiles(files) {
+    if (!files || !files.length) return '';
+    if (files.length > MAX_FILES) return 'Choose no more than 10 files.';
+    for (var i = 0; i < files.length; i += 1) {
+      if (files[i].size > MAX_FILE_BYTES) {
+        return files[i].name + ' exceeds the 25MB per-file limit.';
+      }
+    }
+    return '';
+  }
 
-    var originalText = submitBtn.textContent;
+  function displaySelectedFiles(files) {
+    var error = validateFiles(files);
+    if (error) {
+      setDropzoneMessage(error, true);
+      return false;
+    }
+    var names = Array.from(files).map(function(file) { return file.name; });
+    setDropzoneMessage('\u2713 ' + names.join(', '), false);
+    return true;
+  }
+
+  if (dropzone && fileInput) {
+    dropzone.addEventListener('click', function() { fileInput.click(); });
+    dropzone.addEventListener('keydown', function(event) {
+      if (event.key === 'Enter' || event.key === ' ') {
+        event.preventDefault();
+        fileInput.click();
+      }
+    });
+    fileInput.addEventListener('change', function() {
+      displaySelectedFiles(fileInput.files);
+    });
+    ['dragover', 'dragenter'].forEach(function(eventName) {
+      dropzone.addEventListener(eventName, function(event) {
+        event.preventDefault();
+        dropzone.classList.add('is-dragover');
+      });
+    });
+    dropzone.addEventListener('dragleave', function() {
+      dropzone.classList.remove('is-dragover');
+    });
+    dropzone.addEventListener('drop', function(event) {
+      event.preventDefault();
+      dropzone.classList.remove('is-dragover');
+      var files = event.dataTransfer.files;
+      if (!displaySelectedFiles(files)) return;
+      try { fileInput.files = files; } catch (error) { }
+    });
+  }
+
+  function showError(message) {
+    submitBtn.textContent = '\u2717 ' + message;
+    submitBtn.style.background = 'var(--accent-primary2)';
+    submitBtn.style.color = '#fff';
+    submitBtn.disabled = false;
+    setTimeout(function() {
+      submitBtn.textContent = defaultButtonText;
+      submitBtn.style.background = 'var(--accent-primary)';
+      submitBtn.style.color = 'var(--bg-deep)';
+      submitBtn.style.boxShadow = '';
+    }, 5000);
+  }
+
+  form.addEventListener('submit', function(event) {
+    event.preventDefault();
+
+    if (!form.checkValidity()) {
+      form.reportValidity();
+      return;
+    }
+
+    var fileError = validateFiles(fileInput ? fileInput.files : null);
+    if (fileError) {
+      setDropzoneMessage(fileError, true);
+      showError('CHECK YOUR ATTACHMENTS');
+      return;
+    }
+
     submitBtn.textContent = 'TRANSMITTING...';
     submitBtn.disabled = true;
     submitBtn.style.background = 'var(--accent-blue)';
     submitBtn.style.color = 'var(--bg-deep)';
 
-    var data = new FormData(form);
-
     fetch(FORMSPREE_URL, {
       method: 'POST',
-      body: data,
-      headers: { 'Accept': 'application/json' }
+      body: new FormData(form),
+      headers: { Accept: 'application/json' }
     })
-    .then(function(response) {
-      if (response.ok) {
-        showSuccess();
-      } else {
-        return response.json().then(function(json) {
-          var msg = (json.errors && json.errors.length)
-            ? json.errors.map(function(err) { return err.message; }).join(', ')
-            : 'Submission failed.';
-          showError(msg);
+      .then(function(response) {
+        if (response.ok) {
+          submitBtn.textContent = '\u2713 PROJECT RECEIVED \u2014 EXPECT A REPLY IN 1\u20132 BUSINESS DAYS';
+          submitBtn.style.background = 'var(--accent-blue)';
+          submitBtn.style.color = 'var(--bg-deep)';
+          submitBtn.style.boxShadow = 'var(--glow-blue)';
+          document.getElementById('project-request').scrollIntoView({ behavior: 'smooth', block: 'start' });
+          return;
+        }
+        return response.json().then(function(payload) {
+          var message = payload.errors && payload.errors.length
+            ? payload.errors.map(function(error) { return error.message; }).join(', ')
+            : 'Submission failed. Please try again.';
+          showError(message);
         });
-      }
-    })
-    .catch(function() {
-      showError('Network error \u2014 check your connection and try again.');
-    });
+      })
+      .catch(function() {
+        showError('NETWORK ERROR \u2014 PLEASE TRY AGAIN');
+      });
   });
-
-  /* ── Success state ──────────────────────────────────────── */
-  function showSuccess() {
-    if (!submitBtn) return;
-    submitBtn.textContent = '\u2713 REQUEST RECEIVED \u2014 EXPECT A REPLY IN 1\u20132 BUSINESS DAYS';
-    submitBtn.style.background = 'var(--accent-blue)';
-    submitBtn.style.color = 'var(--bg-deep)';
-    submitBtn.style.boxShadow = 'var(--glow-blue)';
-    submitBtn.disabled = true;
-  }
-
-  /* ── Error state ────────────────────────────────────────── */
-  function showError(msg) {
-    if (!submitBtn) return;
-    submitBtn.textContent = '\u2717 SOMETHING WENT WRONG \u2014 EMAIL US DIRECTLY';
-    submitBtn.style.background = 'var(--accent-primary2)';
-    submitBtn.style.color = '#fff';
-    submitBtn.disabled = false;
-    setTimeout(function() {
-      submitBtn.textContent = '\u25B8 SEND IDEA FOR REVIEW';
-      submitBtn.style.background = 'var(--accent-primary)';
-      submitBtn.style.color = 'var(--bg-deep)';
-      submitBtn.style.boxShadow = '';
-    }, 4000);
-  }
-
 })();

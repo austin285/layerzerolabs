@@ -18,16 +18,17 @@
     href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;900&family=Exo+2:ital,wght@0,300;0,400;0,500;0,600;1,300&family=Share+Tech+Mono&display=swap"
     rel="stylesheet"
   />
-  <link rel="stylesheet" href="css/base.css?v=20260725b" />
-  <link rel="stylesheet" href="css/animations.css?v=20260725b" />
-  <link rel="stylesheet" href="css/layout.css?v=20260725b" />
-  <link rel="stylesheet" href="css/components.css?v=20260725b" />
+  <link rel="stylesheet" href="css/base.css?v=20260725c" />
+  <link rel="stylesheet" href="css/animations.css?v=20260725c" />
+  <link rel="stylesheet" href="css/layout.css?v=20260725c" />
+  <link rel="stylesheet" href="css/components.css?v=20260725c" />
 </head>
 <body>
   <div id="cursor-outer" aria-hidden="true"></div>
   <div id="cursor-inner" aria-hidden="true"></div>
   <nav id="main-nav" role="navigation" aria-label="Main navigation">
-    <a href="#hero" class="nav-logo" aria-label="Layer Zero Labs home">LAYER<span class="glyph-zero">Ø</span>LABS
+    <a href="#hero" class="nav-logo" aria-label="Layer Zero Labs home">
+      <img src="assets/brand/lzl-logo-horizontal.svg" alt="" width="390" height="80" />
     </a>
     <button
       class="nav-toggle"
@@ -43,8 +44,7 @@
       <li><a href="#substrate">Substrate</a></li>
       <li><a href="#process">Process</a></li>
       <li><a href="#about">About</a></li>
-            <li><a href="#image-to-print">Image to Print</a></li>
-<li><a href="#quote" class="nav-cta">Get Quote</a></li>
+      <li><a href="#project-request" class="nav-cta">Start a Project</a></li>
     </ul>
   </nav>
   <section id="hero" aria-label="Hero">
@@ -58,7 +58,7 @@
       </h1>
       <p class="hero-tagline">Custom FDM Parts, Prototypes, and Short-Run Production · Made in Georgia</p>
       <div class="hero-actions">
-        <a href="#quote" class="btn-primary">▸ REQUEST A PRINT QUOTE</a>
+        <a href="#project-request" class="btn-primary">▸ START A PROJECT</a>
         <a href="#services" class="btn-secondary">EXPLORE SERVICES</a>
       </div>
     </div>
@@ -171,7 +171,7 @@
     <div class="section-inner">
       <div class="substrate-banner reveal">
         <img
-          src="assets/substrate/layer-zero-substrate-banner.png"
+          src="assets/substrate/layer-zero-substrate-banner-v2.png"
           alt="Layer Zero Labs — Layer Zero Substrate"
           loading="lazy"
         />
@@ -475,7 +475,7 @@
     </div><!-- /.section-inner -->
   </section>
 
-  <section id="image-to-print" style="background:var(--bg-dark);border-top:1px solid rgba(0,168,255,0.1)">
+  <section id="image-to-print" hidden aria-hidden="true">
     <div class="section-inner">
       <p class="section-label reveal">Start Without a Model</p>
       <h2 class="section-title reveal">Have an Idea? <em>Start Here.</em></h2>
@@ -516,7 +516,7 @@
           </div>
         </div>
 
-        <form id="image-form" class="quote-form reveal" action="https://formspree.io/f/xojknlvk" method="POST" novalidate>
+        <div class="quote-form reveal">
           <input type="hidden" name="_subject" value="LZL Image-to-Print Request" />
 
           <div class="form-row">
@@ -583,26 +583,26 @@
             </div>
           </div>
 
-          <button id="image-submit-btn" type="submit" class="btn-submit">
+          <button id="image-submit-btn" type="button" class="btn-submit">
             ▸ SEND IDEA FOR REVIEW
           </button>
-        </form>
+        </div>
       </div><!-- /.quote-grid -->
     </div><!-- /.section-inner -->
   </section>
 
-  <section id="quote">
+  <section id="project-request">
     <div class="section-inner">
-      <p class="section-label reveal">Already Have a 3D Model?</p>
-      <h2 class="section-title reveal">Request a <em>Print Quote</em></h2>
+      <p class="section-label reveal">Project Request</p>
+      <h2 class="section-title reveal">Tell Us What You Want to <em>Make</em></h2>
       <div class="quote-grid">
         <div class="quote-info reveal">
-          <h3>Send us the model and requirements.</h3>
+          <h3>Start with whatever you have.</h3>
           <p>
-            Fill out the form with your project details and attach your file.
-            We'll review the geometry, recommend the best process and material,
-            and respond with pricing and next steps—typically within one to
-            two business days.
+            Send a printable model, photograph, sketch, logo, existing part,
+            or written idea. We'll review it, identify the right next step,
+            and respond with questions, recommendations, and pricing—typically
+            within one to two business days.
           </p>
           <div class="contact-method">
             <div class="contact-icon" aria-hidden="true">📧</div>
@@ -626,7 +626,8 @@
             </div>
           </div>
         </div>
-        <form id="quote-form" class="quote-form reveal" novalidate>
+        <form id="quote-form" class="quote-form reveal" action="https://formspree.io/f/xojknlvk" method="POST" enctype="multipart/form-data" novalidate>
+          <input type="hidden" name="_subject" value="LZL Project Request" />
           <div class="form-row">
             <div class="form-group">
               <label for="name">Name</label>
@@ -639,13 +640,14 @@
           </div>
           <div class="form-row">
             <div class="form-group">
-              <label for="technology">What Do You Need?</label>
-              <select id="technology" name="project_type" required>
-                <option value="" disabled selected>Select project type</option>
-                <option>Print My Existing Model</option>
-                <option>Design and Print a Custom Part</option>
-                <option>Recreate or Replace a Part</option>
-                <option>Produce a Small Batch</option>
+              <label for="technology">What Are You Starting With?</label>
+              <select id="technology" name="starting_point" required>
+                <option value="" disabled selected>Select a starting point</option>
+                <option>A Ready-to-Print 3D Model</option>
+                <option>A Model That Needs Adjustments</option>
+                <option>A Sketch, Photo, or Logo</option>
+                <option>An Existing or Broken Part</option>
+                <option>An Idea Without a Model</option>
                 <option>Not Sure — I Need Guidance</option>
               </select>
             </div>
@@ -659,7 +661,7 @@
                 <option>TPU (Flexible)</option>
                 <option>CF-PETG</option>
                 <option>CF-Nylon</option>
-                <option>Not Sure</option>
+                <option>Not Sure — Recommend One</option>
               </select>
             </div>
           </div>
@@ -683,16 +685,16 @@
             ></textarea>
           </div>
           <div class="form-group">
-            <label>Attach File</label>
-            <div id="file-dropzone" class="file-dropzone" role="button" tabindex="0" aria-label="Click or drag to upload 3D file">
+            <label>Upload Models or References</label>
+            <div id="file-dropzone" class="file-dropzone" role="button" tabindex="0" aria-label="Click or drag to upload models or reference files">
               <div class="dropzone-icon" aria-hidden="true">⬆</div>
-              <p class="dropzone-hint">Drop your STL, OBJ, STEP, or 3MF file here — or click to browse</p>
-              <span class="dropzone-types">// MAX 50MB · MULTIPLE FILES OK</span>
+              <p class="dropzone-hint">Drop models, photos, sketches, logos, or PDFs here — or click to browse</p>
+              <span class="dropzone-types">// MAX 25MB PER FILE · UP TO 10 FILES</span>
               <input
                 id="file-input"
                 type="file"
-                name="files"
-                accept=".stl,.obj,.step,.stp,.3mf"
+                name="attachments"
+                accept=".stl,.obj,.step,.stp,.3mf,.jpg,.jpeg,.png,.svg,.pdf"
                 multiple
                 style="display:none"
                 aria-hidden="true"
@@ -700,7 +702,7 @@
             </div>
           </div>
           <button id="submit-btn" type="submit" class="btn-submit">
-            ▸ REQUEST PRINT QUOTE
+            ▸ SEND PROJECT FOR REVIEW
           </button>
         </form>
       </div><!-- /.quote-grid -->
@@ -711,13 +713,13 @@
     <div class="footer-copy">© 2026 LAYER ZERO LABS · ALL RIGHTS RESERVED · GEORGIA, USA</div>
     <nav class="footer-links" aria-label="Footer navigation">
       <a href="#services">Services</a>
-      <a href="#quote">Quote</a>
+      <a href="#project-request">Start a Project</a>
     </nav>
   </footer>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-  <script src="js/cursor.js?v=20260725b"></script>
-  <script src="js/hero.js?v=20260725b"></script>
-  <script src="js/scroll.js?v=20260725b"></script>
-  <script src="js/form.js?v=20260725b"></script>
+  <script src="js/cursor.js?v=20260725c"></script>
+  <script src="js/hero.js?v=20260725c"></script>
+  <script src="js/scroll.js?v=20260725c"></script>
+  <script src="js/form.js?v=20260725d"></script>
 </body>
 </html>
