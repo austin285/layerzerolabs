@@ -232,10 +232,29 @@
   pointer-events: none;
 }
 
-.substrate-banner img {
+.substrate-banner img,
+.substrate-banner video {
   display: block;
   width: 100%;
   height: auto;
+}
+
+.substrate-banner-video {
+  aspect-ratio: 3 / 1;
+  object-fit: cover;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .substrate-banner-video {
+    display: none;
+  }
+
+  .substrate-banner {
+    aspect-ratio: 3 / 1;
+    background:
+      url('../assets/substrate/layer-zero-substrate-banner-v3.png')
+      center / cover no-repeat;
+  }
 }
 
 .substrate-intro {
