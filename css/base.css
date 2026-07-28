@@ -184,6 +184,7 @@ section {
   font-style: normal;
   color: transparent;
   -webkit-text-stroke: 1.5px var(--accent-primary);
+  white-space: nowrap;
 }
 
 /* Electric tear-slash used only for the Layer Zero brand name. */
