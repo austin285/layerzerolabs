@@ -744,7 +744,21 @@
   margin-bottom: 2px;
 }
 
-.contact-value { font-size: 0.86rem; color: var(--text-primary); }
+.contact-value {
+  font-size: 0.86rem;
+  color: var(--text-primary);
+  text-decoration: none;
+}
+
+a.contact-value {
+  transition: color 0.2s ease, text-shadow 0.2s ease;
+}
+
+a.contact-value:hover,
+a.contact-value:focus-visible {
+  color: var(--accent-blue);
+  text-shadow: var(--glow-sm);
+}
 
 /* ── FORM ───────────────────────────────────────────────────── */
 
@@ -887,4 +901,46 @@
   .gallery-item:nth-child(6),
   .gallery-item:nth-child(7),
   .gallery-item:nth-child(8) { grid-column: span 6; grid-row: span 1; }
+}
+
+@media (max-width: 600px) {
+  .about-grid {
+    gap: 42px;
+  }
+
+  .about-visual {
+    height: auto;
+    min-height: 0;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+    padding: 30px 0 18px;
+  }
+
+  .about-visual svg {
+    opacity: 0.3 !important;
+  }
+
+  .about-badge {
+    position: relative;
+    top: auto !important;
+    right: auto !important;
+    bottom: auto !important;
+    left: auto !important;
+    min-width: 0;
+    padding: 16px;
+  }
+
+  .about-badge:first-child {
+    grid-column: 1 / -1;
+  }
+
+  .badge-value {
+    font-size: 1.2rem;
+  }
+
+  .badge-label {
+    font-size: 0.56rem;
+    letter-spacing: 0.12em;
+  }
 }
