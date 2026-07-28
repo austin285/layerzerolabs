@@ -13,6 +13,7 @@
   var dropzone = document.getElementById('file-dropzone');
   var fileInput = document.getElementById('file-input');
   var submitBtn = document.getElementById('submit-btn');
+  var formStatus = document.getElementById('form-status');
   var defaultButtonText = '\u25B8 SEND PROJECT FOR REVIEW';
 
   if (!form || !submitBtn) return;
@@ -79,6 +80,7 @@
   }
 
   function showError(message) {
+    if (formStatus) formStatus.textContent = message;
     submitBtn.textContent = '\u2717 ' + message;
     submitBtn.style.background = 'var(--accent-primary2)';
     submitBtn.style.color = '#fff';
@@ -107,6 +109,7 @@
     }
 
     submitBtn.textContent = 'TRANSMITTING...';
+    if (formStatus) formStatus.textContent = 'Sending your project request.';
     submitBtn.disabled = true;
     submitBtn.style.background = 'var(--accent-blue)';
     submitBtn.style.color = 'var(--bg-deep)';
@@ -118,6 +121,9 @@
     })
       .then(function(response) {
         if (response.ok) {
+          if (formStatus) {
+            formStatus.textContent = 'Project received. Expect a reply in one to two business days.';
+          }
           submitBtn.textContent = '\u2713 PROJECT RECEIVED \u2014 EXPECT A REPLY IN 1\u20132 BUSINESS DAYS';
           submitBtn.style.background = 'var(--accent-blue)';
           submitBtn.style.color = 'var(--bg-deep)';
