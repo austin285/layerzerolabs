@@ -240,7 +240,7 @@
 }
 
 .substrate-banner-video {
-  aspect-ratio: 3 / 1;
+  aspect-ratio: 7 / 3;
   object-fit: cover;
 }
 
@@ -309,18 +309,18 @@
 .substrate-showcase {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  column-gap: clamp(30px, 4vw, 56px);
-  row-gap: clamp(48px, 6vw, 76px);
+  column-gap: clamp(38px, 5vw, 68px);
+  row-gap: clamp(64px, 7vw, 92px);
   margin-top: clamp(76px, 10vw, 132px);
 }
 
 .substrate-shot {
   position: relative;
-  overflow: hidden;
+  overflow: visible;
   margin: 0;
-  border: 1px solid rgba(0, 200, 255, 0.2);
-  background: rgba(3, 10, 18, 0.9);
-  box-shadow: 0 24px 70px rgba(0, 0, 0, 0.28);
+  border: 0;
+  background: transparent;
+  box-shadow: none;
 }
 
 .substrate-shot-featured {
@@ -329,18 +329,7 @@
 }
 
 .substrate-shot::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  border: 1px solid transparent;
-  box-shadow: inset 0 0 55px rgba(0, 200, 255, 0.04);
-  pointer-events: none;
-  transition: border-color 0.25s ease, box-shadow 0.25s ease;
-}
-
-.substrate-shot:hover::after {
-  border-color: rgba(0, 231, 255, 0.42);
-  box-shadow: inset 0 0 70px rgba(0, 200, 255, 0.08), 0 0 28px rgba(0, 200, 255, 0.12);
+  display: none;
 }
 
 .substrate-shot img {
@@ -348,21 +337,27 @@
   width: 100%;
   aspect-ratio: 16 / 9;
   object-fit: cover;
+  border: 1px solid rgba(0, 200, 255, 0.26);
+  background: rgba(3, 10, 18, 0.9);
+  box-shadow: 0 24px 70px rgba(0, 0, 0, 0.34);
   filter: saturate(0.88) contrast(1.03);
-  transition: transform 0.45s ease, filter 0.45s ease;
+  transition: transform 0.45s ease, filter 0.45s ease, border-color 0.25s ease, box-shadow 0.25s ease;
 }
 
 .substrate-shot:hover img {
   transform: scale(1.018);
   filter: saturate(1.05) contrast(1.05);
+  border-color: rgba(0, 231, 255, 0.48);
+  box-shadow: 0 26px 76px rgba(0, 0, 0, 0.38), 0 0 28px rgba(0, 200, 255, 0.12);
 }
 
 .substrate-shot figcaption {
   display: grid;
   gap: 12px;
   min-height: 118px;
+  margin-top: 20px;
   padding: 27px 30px 30px;
-  border-top: 1px solid rgba(0, 200, 255, 0.16);
+  border: 1px solid rgba(0, 200, 255, 0.16);
   background:
     linear-gradient(90deg, rgba(0, 200, 255, 0.07), transparent 50%),
     rgba(3, 10, 18, 0.96);
@@ -386,7 +381,7 @@
 @media (max-width: 720px) {
   .substrate-showcase {
     grid-template-columns: 1fr;
-    row-gap: 44px;
+    row-gap: 58px;
     margin-top: 72px;
   }
 
@@ -398,6 +393,7 @@
   .substrate-shot figcaption {
     gap: 10px;
     min-height: 0;
+    margin-top: 16px;
     padding: 23px 22px 26px;
   }
 }
