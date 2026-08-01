@@ -184,6 +184,43 @@ section {
   font-style: normal;
   color: transparent;
   -webkit-text-stroke: 1.5px var(--accent-primary);
+  white-space: nowrap;
+}
+
+/* Electric tear-slash used only for the Layer Zero brand name. */
+.electric-zero {
+  position: relative;
+  display: inline-block;
+  width: 0.78em;
+  color: transparent;
+  line-height: 0.92;
+  -webkit-text-stroke: 0.055em var(--accent-cyan);
+  text-shadow: var(--glow-sm);
+}
+
+.electric-zero::after {
+  content: '';
+  position: absolute;
+  top: -0.08em;
+  left: 0.34em;
+  width: 0.12em;
+  height: 1.12em;
+  background: linear-gradient(180deg, #7DF5FF 0%, var(--accent-blue) 52%, #00E7FF 100%);
+  clip-path: polygon(0 0, 100% 0, 64% 40%, 100% 40%, 0 100%, 36% 56%, 0 56%);
+  transform: rotate(35deg);
+  transform-origin: center;
+  filter: drop-shadow(0 0 0.1em rgba(0, 231, 255, 0.95));
+}
+
+.electric-zero--small {
+  width: 0.74em;
+  margin-inline: 0.01em;
+}
+
+.brand-inline {
+  color: var(--text-primary);
+  font-weight: 600;
+  white-space: nowrap;
 }
 
 /* ── UTILITY CLASSES ────────────────────────────────────────── */

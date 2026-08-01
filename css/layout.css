@@ -43,7 +43,7 @@
 .nav-logo {
   display: flex;
   align-items: center;
-  width: clamp(220px, 22vw, 286px);
+  width: clamp(226px, 20vw, 260px);
   flex: 0 0 auto;
 }
 
@@ -65,7 +65,7 @@
 .nav-toggle {
   display: none;
   width: 44px;
-  height: 38px;
+  height: 44px;
   padding: 10px;
   border: 1px solid var(--panel-border);
   background: rgba(23, 34, 45, 0.9);
@@ -229,8 +229,6 @@
 .brand-layer { color: var(--chrome); }
 
 .brand-zero {
-  color: transparent;
-  -webkit-text-stroke: 2px var(--accent-cyan);
   display: inline-block;
   animation:
     fadeUp 0.8s 0.45s forwards,
@@ -400,11 +398,6 @@
   color: var(--chrome);
 }
 
-.footer-logo .glyph-zero {
-  color: var(--accent-blue);
-  text-shadow: var(--glow-sm);
-}
-
 .footer-copy {
   font-family: var(--font-mono);
   font-size: 0.63rem;
@@ -470,6 +463,6 @@
 }
 
 @media (max-width: 540px) {
-  .nav-logo { width: 214px; }
+  .nav-logo { width: 224px; }
   .nav-links.is-open { grid-template-columns: 1fr; }
 }

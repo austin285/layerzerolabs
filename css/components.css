@@ -308,10 +308,10 @@
 
 .substrate-showcase {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  column-gap: clamp(38px, 5vw, 68px);
-  row-gap: clamp(64px, 7vw, 92px);
-  margin-top: clamp(76px, 10vw, 132px);
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  gap: clamp(24px, 3vw, 38px);
+  align-items: start;
+  margin-top: clamp(68px, 8vw, 108px);
 }
 
 .substrate-shot {
@@ -324,9 +324,11 @@
 }
 
 .substrate-shot-featured {
-  grid-column: 1 / -1;
-  margin-bottom: clamp(8px, 2vw, 24px);
+  grid-column: span 8;
 }
+
+.substrate-shot:nth-child(2) { grid-column: span 4; }
+.substrate-shot:nth-child(n + 3) { grid-column: span 3; }
 
 .substrate-shot::after {
   display: none;
@@ -356,7 +358,7 @@
   gap: 12px;
   min-height: 118px;
   margin-top: 20px;
-  padding: 27px 30px 30px;
+  padding: 24px 24px 26px;
   border: 1px solid rgba(0, 200, 255, 0.16);
   background:
     linear-gradient(90deg, rgba(0, 200, 255, 0.07), transparent 50%),
@@ -378,6 +380,16 @@
   color: var(--text-secondary);
 }
 
+@media (max-width: 1080px) {
+  .substrate-shot-featured {
+    grid-column: 1 / -1;
+  }
+
+  .substrate-shot:nth-child(n + 2) {
+    grid-column: span 6;
+  }
+}
+
 @media (max-width: 720px) {
   .substrate-showcase {
     grid-template-columns: 1fr;
@@ -387,7 +399,10 @@
 
   .substrate-shot-featured {
     grid-column: auto;
-    margin-bottom: 8px;
+  }
+
+  .substrate-shot:nth-child(n + 2) {
+    grid-column: auto;
   }
 
   .substrate-shot figcaption {
@@ -555,6 +570,8 @@
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 0;
+  padding: 0;
+  list-style: none;
   margin-top: 68px;
   position: relative;
 }
@@ -838,6 +855,9 @@ a.contact-value:focus-visible {
 
 /* File drag-and-drop zone */
 .file-dropzone {
+  width: 100%;
+  color: inherit;
+  font: inherit;
   border: 1px dashed rgba(0, 168, 255, 0.3);
   padding: 26px;
   text-align: center;
@@ -858,9 +878,17 @@ a.contact-value:focus-visible {
   background: rgba(0, 200, 255, 0.04);
 }
 
-.dropzone-icon { font-size: 1.7rem; margin-bottom: 7px; }
+.dropzone-icon {
+  display: block;
+  font-size: 1.7rem;
+  margin-bottom: 7px;
+}
 
-.dropzone-hint { font-size: 0.77rem; color: var(--text-secondary); }
+.dropzone-hint {
+  display: block;
+  font-size: 0.77rem;
+  color: var(--text-secondary);
+}
 
 .dropzone-types {
   font-family: var(--font-mono);
