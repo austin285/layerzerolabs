@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2100 900" role="img" aria-labelledby="title desc">
+  <title id="title">Substrate by Layer Zero Labs</title>
+  <desc id="desc">Dark navy technical banner with one electric blue slashed zero, the Substrate product name, and Layer Zero Labs attribution</desc>
+  <defs>
+    <radialGradient id="bg" cx="54%" cy="48%" r="70%">
+      <stop offset="0%" stop-color="#102D4D"/>
+      <stop offset="48%" stop-color="#061426"/>
+      <stop offset="100%" stop-color="#030812"/>
+    </radialGradient>
+    <linearGradient id="electric" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#7DF5FF"/>
+      <stop offset="44%" stop-color="#00D9FF"/>
+      <stop offset="100%" stop-color="#168BFF"/>
+    </linearGradient>
+    <linearGradient id="chrome" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#FFFFFF"/>
+      <stop offset="48%" stop-color="#EDF6FC"/>
+      <stop offset="100%" stop-color="#7895A8"/>
+    </linearGradient>
+    <pattern id="grid" width="54" height="54" patternUnits="userSpaceOnUse">
+      <path d="M54 0H0V54" fill="none" stroke="#168BFF" stroke-opacity=".11" stroke-width="1"/>
+    </pattern>
+    <filter id="glow" x="-80%" y="-80%" width="260%" height="260%">
+      <feGaussianBlur stdDeviation="14" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+
+  <rect width="2100" height="900" fill="url(#bg)"/>
+  <rect width="2100" height="900" fill="url(#grid)"/>
+  <path d="M0 450H2100" stroke="#00D9FF" stroke-opacity=".18" stroke-width="2"/>
+  <path d="M0 452H2100" stroke="#168BFF" stroke-opacity=".12" stroke-width="10" filter="url(#glow)"/>
+
+  <g fill="none" stroke="#168BFF" stroke-opacity=".36" stroke-width="3">
+    <path d="M0 205H218l55 55h224"/>
+    <path d="M0 690h285l48-48h190"/>
+    <path d="M2100 188h-208l-55 55h-250"/>
+    <path d="M2100 708h-298l-48-48h-175"/>
+  </g>
+  <g fill="#00D9FF">
+    <circle cx="273" cy="260" r="6"/>
+    <circle cx="333" cy="642" r="6"/>
+    <circle cx="1837" cy="243" r="6"/>
+    <circle cx="1754" cy="660" r="6"/>
+  </g>
+
+  <g transform="translate(470 450)" filter="url(#glow)">
+    <circle r="156" fill="#030812" stroke="url(#electric)" stroke-width="28"/>
+    <path d="M95-190 50-87 105-100-81 199-36 91-96 108Z" fill="url(#electric)"/>
+  </g>
+
+  <g transform="translate(765 0)">
+    <text x="0" y="418" fill="url(#chrome)"
+          font-family="Orbitron, Arial, sans-serif" font-size="150"
+          font-weight="900" letter-spacing="10">SUBSTRATE</text>
+    <path d="M5 467H1230" stroke="#00D9FF" stroke-opacity=".65" stroke-width="3"/>
+    <text x="6" y="535" fill="#BBD4E4"
+          font-family="'Share Tech Mono', monospace" font-size="38"
+          letter-spacing="13">BY LAYER ZERO LABS</text>
+    <text x="8" y="608" fill="#7895A8"
+          font-family="'Share Tech Mono', monospace" font-size="24"
+          letter-spacing="8">PRODUCTION-FOCUSED SLICING WORKSPACE</text>
+  </g>
+</svg>

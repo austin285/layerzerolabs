@@ -3,25 +3,26 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Georgia-based custom FDM parts, prototypes, replacement parts, multi-color printing, design support, and short-run production." />
+  <meta name="description" content="Georgia-based custom 3D printing, engineered parts, prototypes, firearm accessories, design support, and short-run production." />
+  <meta name="theme-color" content="#030812" />
   <title>Layer Zero Labs — Custom 3D Printing &amp; Prototyping</title>
   <link rel="canonical" href="https://layerzerolabs.net/" />
   <meta property="og:title" content="Layer Zero Labs — Custom 3D Printing &amp; Prototyping" />
-  <meta property="og:description" content="Custom FDM parts, prototypes, replacement parts, design support, and short-run production—made in Georgia." />
+  <meta property="og:description" content="Purpose-built parts, prototypes, lawful firearm accessories, design support, and short-run FDM production—made in Georgia." />
   <meta property="og:url" content="https://layerzerolabs.net/" />
   <meta property="og:type" content="website" />
-  <meta property="og:image" content="https://layerzerolabs.net/assets/brand/layer-zero-labs-seal.png" />
-  <meta property="og:image:alt" content="Layer Zero Labs metallic black, silver, and cyan seal" />
-  <link rel="icon" type="image/png" href="assets/brand/layer-zero-labs-seal.png" />
+  <meta property="og:image" content="https://layerzerolabs.net/assets/brand/lzl-layer-gate-badge-v1.png" />
+  <meta property="og:image:alt" content="Layer Zero Labs Layer Gate badge with a single electric blue slashed zero and LZL footer" />
+  <link rel="icon" type="image/svg+xml" href="assets/brand/lzl-electric-zero.svg" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link
     href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;900&family=Exo+2:ital,wght@0,300;0,400;0,500;0,600;1,300&family=Share+Tech+Mono&display=swap"
     rel="stylesheet"
   />
-  <link rel="stylesheet" href="css/base.css?v=20260728b" />
-  <link rel="stylesheet" href="css/animations.css?v=20260725c" />
-  <link rel="stylesheet" href="css/layout.css?v=20260728b" />
-  <link rel="stylesheet" href="css/components.css?v=20260728a" />
+  <link rel="stylesheet" href="css/base.css?v=20260802a" />
+  <link rel="stylesheet" href="css/animations.css?v=20260802a" />
+  <link rel="stylesheet" href="css/layout.css?v=20260802a" />
+  <link rel="stylesheet" href="css/components.css?v=20260802a" />
 </head>
 <body>
   <div id="cursor-outer" aria-hidden="true"></div>
@@ -41,6 +42,7 @@
     </button>
     <ul id="primary-navigation" class="nav-links">
       <li><a href="#services">Services</a></li>
+      <li><a href="#firearm-accessories">Firearm Accessories</a></li>
       <li><a href="#substrate">Substrate</a></li>
       <li><a href="#process">Process</a></li>
       <li><a href="#about">About</a></li>
@@ -51,7 +53,7 @@
   <section id="hero" aria-label="Hero">
     <canvas id="hero-canvas" aria-hidden="true"></canvas>
     <div class="hero-content">
-      <img class="hero-seal" src="assets/brand/layer-zero-labs-seal.png" alt="Layer Zero Labs seal" />
+      <img class="hero-seal" src="assets/brand/lzl-layer-gate-badge.svg?v=20260802a" alt="Layer Zero Labs Layer Gate badge" />
       <p class="hero-eyebrow">
         <span class="visually-hidden">Layer Zero · The Physical Layer · Georgia</span>
         <span aria-hidden="true">// LAYER ZER<span class="electric-zero electric-zero--small">O</span> · THE PHYSICAL LAYER · GEORGIA</span>
@@ -174,33 +176,62 @@
       </div><!-- /.services-grid -->
     </div><!-- /.section-inner -->
   </section>
+  <section id="firearm-accessories" aria-labelledby="firearm-accessories-title">
+    <div class="section-inner">
+      <p class="section-label reveal">Specialty Production</p>
+      <h2 id="firearm-accessories-title" class="section-title reveal">Firearm <em>Accessories</em></h2>
+      <div class="specialty-grid">
+        <div class="specialty-copy reveal">
+          <p class="specialty-kicker">// LAWFUL · PURPOSE-BUILT · DOCUMENTED</p>
+          <h3>Designed for fit, function, and responsible ownership.</h3>
+          <p>
+            Layer Zero Labs produces custom firearm accessories and related
+            components for lawful use. We support the exercise of Second
+            Amendment rights and approach this work with the same precision,
+            material awareness, and production discipline applied to every
+            engineered part.
+          </p>
+          <p>
+            Projects are reviewed individually for intended use, compatibility,
+            material requirements, and production feasibility. Availability and
+            fulfillment remain subject to applicable federal, state, and local
+            law, platform policies, carrier requirements, and destination
+            restrictions.
+          </p>
+          <a href="#project-request" class="btn-secondary">DISCUSS A PROJECT</a>
+        </div>
+        <aside class="specialty-panel reveal reveal-d1" aria-label="Firearm accessory project standards">
+          <p class="specialty-panel-label">CATEGORY STANDARDS</p>
+          <ul>
+            <li><strong>Clear scope</strong><span>Intended use and compatibility are documented before production.</span></li>
+            <li><strong>Material fit</strong><span>Material and geometry are selected for the actual application.</span></li>
+            <li><strong>Separate review</strong><span>This category follows a dedicated request and eligibility review.</span></li>
+            <li><strong>Lawful fulfillment</strong><span>Orders are accepted and fulfilled only where requirements can be met.</span></li>
+          </ul>
+          <p class="specialty-note">
+            A submitted request is not an automatic acceptance. We may request
+            additional information before quoting or production.
+          </p>
+        </aside>
+      </div>
+    </div>
+  </section>
   <section id="substrate" aria-labelledby="substrate-title">
     <div class="section-inner">
       <div class="substrate-banner reveal">
-        <video
-          class="substrate-banner-video"
-          autoplay
-          muted
-          loop
-          playsinline
-          preload="metadata"
-          poster="assets/substrate/layer-zero-substrate-banner-v3.png"
-          aria-hidden="true"
-        >
-          <source src="assets/substrate/layer-zero-substrate-banner-animated.mp4" type="video/mp4" />
-          <img
-            src="assets/substrate/layer-zero-substrate-banner-v3.png"
-            alt="Layer Zero Labs — Layer Zero Substrate"
-          />
-        </video>
+        <img
+          class="substrate-banner-static"
+          src="assets/substrate/substrate-by-layer-zero-labs-banner.svg?v=20260802a"
+          alt="Substrate by Layer Zero Labs — production-focused slicing workspace"
+        />
       </div>
       <div class="substrate-intro">
         <div class="substrate-copy reveal">
           <p class="section-label">Software in Development</p>
           <h2 id="substrate-title" class="section-title">Control Every <em>Layer</em></h2>
           <p class="substrate-lede">
-            <span class="visually-hidden">Layer Zero Substrate</span>
-            <span class="brand-inline" aria-hidden="true">LAYER ZER<span class="electric-zero electric-zero--small">O</span> SUBSTRATE</span>
+            <span class="visually-hidden">Substrate by Layer Zero Labs</span>
+            <span class="substrate-lockup" aria-hidden="true">SUBSTRATE <small>BY LAYER ZER<span class="electric-zero electric-zero--small">O</span> LABS</small></span>
             is our in-house slicing platform, built from the
             production floor outward. It brings multi-plate project planning,
             production-ready slicing, material management, and visual
@@ -208,7 +239,7 @@
           </p>
           <a
             class="btn-primary"
-            href="mailto:print@layerzerolabs.net?subject=LAYER%C3%98%20SUBSTRATE%20Beta%20Interest"
+            href="mailto:print@layerzerolabs.net?subject=Substrate%20Beta%20Interest"
           >▸ JOIN BETA UPDATES</a>
         </div>
         <div class="substrate-features reveal reveal-d1" role="list" aria-label="Substrate preview features">
@@ -229,11 +260,11 @@
           </article>
         </div>
       </div>
-      <div class="substrate-showcase" role="list" aria-label="Layer Zero Substrate interface previews">
+      <div class="substrate-showcase" role="list" aria-label="Substrate interface previews">
         <figure class="substrate-shot substrate-shot-featured reveal" role="listitem">
           <img
             src="assets/substrate/01-main-workspace.jpg"
-            alt="Layer Zero Substrate main slicing workspace with a model positioned on the build plate"
+            alt="Substrate main slicing workspace with a model positioned on the build plate"
             loading="lazy"
           />
           <figcaption>
@@ -244,7 +275,7 @@
         <figure class="substrate-shot reveal reveal-d1" role="listitem">
           <img
             src="assets/substrate/02-multi-plate-interface.jpg"
-            alt="Layer Zero Substrate multi-plate project interface"
+            alt="Substrate multi-plate project interface"
             loading="lazy"
           />
           <figcaption>
@@ -255,7 +286,7 @@
         <figure class="substrate-shot reveal reveal-d2" role="listitem">
           <img
             src="assets/substrate/03-toolpath-layer-preview.jpg"
-            alt="Layer Zero Substrate toolpath and layer preview"
+            alt="Substrate toolpath and layer preview"
             loading="lazy"
           />
           <figcaption>
@@ -266,7 +297,7 @@
         <figure class="substrate-shot reveal" role="listitem">
           <img
             src="assets/substrate/04-filament-manager.jpg"
-            alt="Layer Zero Substrate filament and material manager"
+            alt="Substrate filament and material manager"
             loading="lazy"
           />
           <figcaption>
@@ -277,7 +308,7 @@
         <figure class="substrate-shot reveal reveal-d1" role="listitem">
           <img
             src="assets/substrate/05-variable-layer-height-editor.jpg"
-            alt="Layer Zero Substrate variable layer height editor"
+            alt="Substrate variable layer height editor"
             loading="lazy"
           />
           <figcaption>
@@ -288,7 +319,7 @@
         <figure class="substrate-shot reveal reveal-d2" role="listitem">
           <img
             src="assets/substrate/07-cad-parametric-tools.jpg"
-            alt="Layer Zero Substrate parametric CAD tools"
+            alt="Substrate parametric CAD tools"
             loading="lazy"
           />
           <figcaption>
@@ -383,7 +414,7 @@
         </div>
         <div class="gallery-item gallery-concept reveal" data-category="functional">
           <div class="gallery-placeholder">
-            <img class="placeholder-seal" src="assets/brand/layer-zero-labs-seal.png" alt="" aria-hidden="true" />
+            <img class="placeholder-seal" src="assets/brand/lzl-layer-gate-badge.svg" alt="" aria-hidden="true" />
             <div class="placeholder-kicker">SIGNATURE BUILD</div>
             <div class="placeholder-icon" aria-hidden="true">✦</div>
             <div class="placeholder-title">LAYER ZERO RELIC</div>
@@ -516,16 +547,16 @@
               <line x1="0"   y1="8"   x2="0"   y2="105" stroke="rgba(0,200,255,.2)" stroke-width=".5" stroke-dasharray="4,4"/>
               <line x1="-42" y1="-12" x2="42"  y2="28"  stroke="rgba(0,200,255,.2)" stroke-width=".5" stroke-dasharray="4,4"/>
               <circle cx="0"   cy="-75" r="3" fill="rgba(0,200,255,.8)"/>
-              <circle cx="85"  cy="-33" r="3" fill="rgba(255,107,0,.8)"/>
-              <circle cx="-85" cy="-33" r="3" fill="rgba(255,107,0,.8)"/>
+              <circle cx="85"  cy="-33" r="3" fill="rgba(255,179,71,.8)"/>
+              <circle cx="-85" cy="-33" r="3" fill="rgba(255,179,71,.8)"/>
             </g>
-            <line x1="300" y1="98"  x2="330" y2="98"  stroke="rgba(255,107,0,.6)" stroke-width="1"/>
-            <line x1="300" y1="240" x2="330" y2="240" stroke="rgba(255,107,0,.6)" stroke-width="1"/>
-            <line x1="315" y1="98"  x2="315" y2="240" stroke="rgba(255,107,0,.5)" stroke-width=".5"/>
-            <text x="322" y="172" fill="rgba(255,107,0,.75)" font-size="9" font-family="monospace"
+            <line x1="300" y1="98"  x2="330" y2="98"  stroke="rgba(255,179,71,.6)" stroke-width="1"/>
+            <line x1="300" y1="240" x2="330" y2="240" stroke="rgba(255,179,71,.6)" stroke-width="1"/>
+            <line x1="315" y1="98"  x2="315" y2="240" stroke="rgba(255,179,71,.5)" stroke-width=".5"/>
+            <text x="322" y="172" fill="rgba(255,179,71,.75)" font-size="9" font-family="monospace"
                   transform="rotate(90,322,172)">150mm</text>
             <text x="10" y="490" fill="rgba(0,168,255,.28)" font-size="7" font-family="monospace">
-              LAYER Ø LABS · GEORGIA · CAD REV 1.0
+              LZL · GEORGIA · CAD REV 1.1
             </text>
           </svg>
         </div>
@@ -559,7 +590,7 @@
               <li class="capability-item"><strong>Engineering and flexible materials</strong> — selected according to the use case</li>
               <li class="capability-item"><strong>CAD and repair workflows</strong> — modeling, reverse design, and print optimization</li>
               <li class="capability-item">
-                <strong><span class="visually-hidden">Layer Zero Substrate</span><span aria-hidden="true">LAYER ZER<span class="electric-zero electric-zero--small">O</span> SUBSTRATE</span></strong>
+                <strong>Substrate</strong>
                 — our in-house production and slicing workspace
               </li>
               <li class="capability-item"><strong>Finishing and assembly</strong> — sand, prime, paint, install hardware, and assemble</li>
@@ -743,6 +774,7 @@
                 <option>A Model That Needs Adjustments</option>
                 <option>A Sketch, Photo, or Logo</option>
                 <option>An Existing or Broken Part</option>
+                <option>A Firearm Accessory Project</option>
                 <option>An Idea Without a Model</option>
                 <option>Not Sure — I Need Guidance</option>
               </select>
@@ -816,13 +848,15 @@
     </div>
     <nav class="footer-links" aria-label="Footer navigation">
       <a href="#services">Services</a>
+      <a href="#firearm-accessories">Firearm Accessories</a>
+      <a href="#substrate">Substrate</a>
       <a href="https://iiwwg5-tb.myshopify.com">Shop</a>
       <a href="#project-request">Start a Project</a>
     </nav>
   </footer>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
   <script src="js/cursor.js?v=20260725c"></script>
-  <script src="js/hero.js?v=20260725c"></script>
+  <script src="js/hero.js?v=20260802a"></script>
   <script src="js/scroll.js?v=20260725c"></script>
   <script src="js/form.js?v=20260728a"></script>
 </body>

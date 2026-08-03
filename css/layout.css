@@ -59,7 +59,7 @@
 .nav-links {
   display: flex;
   align-items: center;
-  gap: 36px;
+  gap: 24px;
 }
 
 .nav-toggle {
@@ -129,7 +129,7 @@
 }
 
 .nav-cta:hover {
-  background: #FF8178 !important;
+  background: #FFC66F !important;
   box-shadow: var(--glow-primary);
 }
 
@@ -341,6 +341,13 @@
   background: var(--bg-dark);
   border-top: 1px solid rgba(0, 168, 255, 0.1);
   border-bottom: 1px solid rgba(0, 168, 255, 0.1);
+}
+
+#firearm-accessories {
+  background:
+    linear-gradient(135deg, rgba(255, 179, 71, .035), transparent 42%),
+    var(--bg-deep);
+  border-bottom: 1px solid rgba(255, 179, 71, .18);
 }
 
 #substrate {
