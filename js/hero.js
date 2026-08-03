@@ -57,14 +57,16 @@
   /* ── Brand color palette (matches CSS variables) ──────────── */
 
   const palette = [
-    0x00C8FF, // --accent-blue
-    0x00E7FF, // --accent-cyan
-    0xFF6B5F, // --accent-primary
-    0xF6A84A, // --accent-orange
-    0x00A8C7, // --accent-cyan2
-    0x007FCC, // --accent-blue2
-    0xD94E45, // --accent-primary2
-    0xC97825  // --accent-orange2
+    0x00D9FF, // --accent-cyan
+    0x168BFF, // --accent-blue
+    0x00A6C7, // --accent-cyan2
+    0x0C63C7, // --accent-blue2
+    0x00D9FF,
+    0x168BFF,
+    0xBBD4E4, // --chrome-dim
+    0x00A6C7,
+    0x0C63C7,
+    0xFFB347  // --accent-primary, intentionally rare
   ];
 
   /* ── Shared box geometry ──────────────────────────────────── */
