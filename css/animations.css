@@ -173,7 +173,7 @@ body.cursor-hover #cursor-outer {
   width: 52px;
   height: 52px;
   border-color: var(--accent-primary);
-  background: rgba(0, 217, 255, 0.05);
+  background: rgba(45, 212, 191, 0.05);
 }
 
 body.cursor-hover #cursor-inner {

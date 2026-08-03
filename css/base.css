@@ -8,42 +8,42 @@
 :root {
 
   /* Backgrounds */
-  --bg-deep:        #030812;
-  --bg-dark:        #061426;
-  --bg-card:        #0A1F38;
-  --bg-card-hover:  #102D4D;
-  --bg-input:       #061426;
+  --bg-deep:        #091017;
+  --bg-dark:        #101820;
+  --bg-card:        #17222D;
+  --bg-card-hover:  #21303D;
+  --bg-input:       #101A24;
 
   /* Brand Colors */
-  --accent-primary:  #FFB347;
-  --accent-primary2: #E69A2E;
-  --accent-orange:   #FFB347;
+  --accent-primary:  #FF6B5F;
+  --accent-primary2: #D94E45;
+  --accent-orange:   #F6A84A;
   --accent-orange2:  #C97825;
-  --accent-cyan:     #00D9FF;
-  --accent-cyan2:    #00A6C7;
-  --accent-blue:     #168BFF;
-  --accent-blue2:    #0C63C7;
+  --accent-cyan:     #00E7FF;
+  --accent-cyan2:    #00A8C7;
+  --accent-blue:     #00C8FF;
+  --accent-blue2:    #007FCC;
 
   /* Chrome / Metal */
-  --chrome:         #EDF6FC;
-  --chrome-dim:     #BBD4E4;
+  --chrome:         #E6EDF5;
+  --chrome-dim:     #9FB0C1;
 
   /* Text */
-  --text-primary:   #EDF6FC;
-  --text-secondary: #BBD4E4;
-  --text-dim:       #7895A8;
+  --text-primary:   #F1F5F9;
+  --text-secondary: #CBD5E1;
+  --text-dim:       #8191A3;
 
   /* Blueprint grid lines */
   --bp-line:        rgba(56, 189, 248, 0.08);
-  --bp-heavy:       rgba(0, 217, 255, 0.14);
+  --bp-heavy:       rgba(45, 212, 191, 0.14);
 
   /* Glow shadows */
-  --glow-blue:    0 0 15px rgba(0,217,255,.58), 0 0 42px rgba(22,139,255,.22);
-  --glow-orange:  0 0 15px rgba(255,179,71,.32), 0 0 38px rgba(255,179,71,.12);
-  --glow-primary: 0 0 15px rgba(255,179,71,.36), 0 0 36px rgba(255,179,71,.13);
-  --glow-sm:      0 0 8px rgba(0,217,255,.55), 0 0 22px rgba(22,139,255,.2);
-  --panel-border: rgba(0,217,255,.2);
-  --panel-border-strong: rgba(0,217,255,.5);
+  --glow-blue:    0 0 15px rgba(0,200,255,.62), 0 0 42px rgba(0,200,255,.24);
+  --glow-orange:  0 0 15px rgba(246,168,74,.38), 0 0 38px rgba(246,168,74,.14);
+  --glow-primary: 0 0 15px rgba(255,107,95,.42), 0 0 36px rgba(255,107,95,.15);
+  --glow-sm:      0 0 8px rgba(0,231,255,.58), 0 0 22px rgba(0,200,255,.22);
+  --panel-border: rgba(0,200,255,.22);
+  --panel-border-strong: rgba(0,231,255,.52);
 
   /* Typography scale */
   --font-display: 'Orbitron', sans-serif;
